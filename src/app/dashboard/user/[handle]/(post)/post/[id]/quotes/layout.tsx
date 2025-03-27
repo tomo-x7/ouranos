@@ -1,9 +1,9 @@
 import Layout from "@/containers/Layout";
 
 export default function RepostedByLayout({
-  children,
+	children,
 }: {
-  children: React.ReactNode;
+	children: React.ReactNode;
 }) {
-  return <Layout>{children}</Layout>;
+	return <Layout>{children}</Layout>;
 }

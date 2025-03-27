@@ -2,10 +2,10 @@ import FeedHeaderSkeleton from "@/components/contentDisplay/feedHeader/FeedHeade
 import FeedPostSkeleton from "@/components/contentDisplay/feedPost/FeedPostSkeleton";
 
 export default function Loading() {
-  return (
-    <>
-      <FeedHeaderSkeleton />
-      <FeedPostSkeleton />
-    </>
-  );
+	return (
+		<>
+			<FeedHeaderSkeleton />
+			<FeedPostSkeleton />
+		</>
+	);
 }

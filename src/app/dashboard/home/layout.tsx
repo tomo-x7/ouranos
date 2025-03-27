@@ -2,19 +2,19 @@ import FeedTabs from "@/components/navigational/feedTabs/FeedTabs";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Home",
-  description: "Home",
+	title: "Home",
+	description: "Home",
 };
 
 export default async function DashboardLayout({
-  children,
+	children,
 }: {
-  children: React.ReactNode;
+	children: React.ReactNode;
 }) {
-  return (
-    <>
-      <FeedTabs />
-      {children}
-    </>
-  );
+	return (
+		<>
+			<FeedTabs />
+			{children}
+		</>
+	);
 }

@@ -1,12 +1,11 @@
 import BlockedUsersContainer from "@/containers/settings/blockedUsersContainer/BlockedUsersContainer";
-import { Metadata } from "next";
+import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Blocked Users",
-  description: "Blocked Users",
+	title: "Blocked Users",
+	description: "Blocked Users",
 };
 
-
 export default function Page() {
-  return <BlockedUsersContainer />;
+	return <BlockedUsersContainer />;
 }

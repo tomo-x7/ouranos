@@ -1,15 +1,14 @@
-import Layout from "@/containers/Layout";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Topics",
-  description: "Topics",
+	title: "Topics",
+	description: "Topics",
 };
 
 export default async function TopicsLayout({
-  children,
+	children,
 }: {
-  children: React.ReactNode;
+	children: React.ReactNode;
 }) {
-  return <>{children}</>;
+	return <>{children}</>;
 }

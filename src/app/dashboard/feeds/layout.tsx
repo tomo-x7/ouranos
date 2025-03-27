@@ -2,14 +2,14 @@ import Layout from "@/containers/Layout";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Feeds",
-  description: "Feeds",
+	title: "Feeds",
+	description: "Feeds",
 };
 
 export default function FeedLayout({
-  children,
+	children,
 }: {
-  children: React.ReactNode;
+	children: React.ReactNode;
 }) {
-  return <Layout>{children}</Layout>;
+	return <Layout>{children}</Layout>;
 }
