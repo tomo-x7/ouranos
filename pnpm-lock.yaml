@@ -17,6 +17,9 @@ importers:
       '@atproto/lex-cli':
         specifier: ^0.5.2
         version: 0.5.2
+      '@atproto/lexicon':
+        specifier: ^0.4.9
+        version: 0.4.9
       '@atproto/xrpc':
         specifier: ^0.6.4
         version: 0.6.4
@@ -140,6 +143,9 @@ importers:
       tinyld:
         specifier: ^1.3.4
         version: 1.3.4
+      tippy.js:
+        specifier: ^6.3.7
+        version: 6.3.7
       use-clipboard-copy:
         specifier: ^0.2.0
         version: 0.2.0(react@18.3.1)
@@ -184,6 +190,9 @@ packages:
   '@atproto/common-web@0.3.1':
     resolution: {integrity: sha512-N7wiTnus5vAr+lT//0y8m/FaHHLJ9LpGuEwkwDAeV3LCiPif4m/FS8x/QOYrx1PdZQwKso95RAPzCGWQBH5j6Q==}
 
+  '@atproto/common-web@0.4.0':
+    resolution: {integrity: sha512-ZYL0P9myHybNgwh/hBY0HaBzqiLR1B5/ie5bJpLQAg0whRzNA28t8/nU2vh99tbsWcAF0LOD29M8++LyENJLNQ==}
+
   '@atproto/crypto@0.4.2':
     resolution: {integrity: sha512-aeOfPQYCDbhn2hV06oBF2KXrWjf/BK4yL8lfANJKSmKl3tKWCkiW/moi643rUXXxSE72KtWtQeqvNFYnnFJ0ig==}
 
@@ -194,11 +203,14 @@ packages:
     resolution: {integrity: sha512-fM/FR/FpOMUOpwir7odZNiJhY3at0gMDGZpkLJeWFDaYyChtwqCGd6x7J4S6w/mqtCDcx1bzGTrnsLkJjtuNfg==}
     hasBin: true
 
-  '@atproto/lexicon@0.4.3':
-    resolution: {integrity: sha512-lFVZXe1S1pJP0dcxvJuHP3r/a+EAIBwwU7jUK+r8iLhIja+ml6NmYv8KeFHmIJATh03spEQ9s02duDmFVdCoXg==}
+  '@atproto/lexicon@0.4.9':
+    resolution: {integrity: sha512-/tmEuHQFr51V2V7EAVJzaA40sqJ7ylAZpR962VbOsPtmcdOHvezbjVHYEMXgfb927hS+xqbVyzBTbu5w9v8prA==}
 
   '@atproto/syntax@0.3.1':
     resolution: {integrity: sha512-fzW0Mg1QUOVCWUD3RgEsDt6d1OZ6DdFmbKcDdbzUfh0t4rhtRAC05KbZYmxuMPWDAiJ4BbbQ5dkAc/mNypMXkw==}
+
+  '@atproto/syntax@0.4.0':
+    resolution: {integrity: sha512-b9y5ceHS8YKOfP3mdKmwAx5yVj9294UN7FG2XzP6V5aKUdFazEYRnR9m5n5ZQFKa3GNvz7de9guZCJ/sUTcOAA==}
 
   '@atproto/xrpc@0.6.4':
     resolution: {integrity: sha512-9ZAJ8nsXTqC4XFyS0E1Wlg7bAvonhXQNQ3Ocs1L1LIwFLXvsw/4fNpIHXxvXvqTCVeyHLbImOnE9UiO1c/qIYA==}
@@ -2156,7 +2168,7 @@ snapshots:
   '@atproto/api@0.13.11':
     dependencies:
       '@atproto/common-web': 0.3.1
-      '@atproto/lexicon': 0.4.3
+      '@atproto/lexicon': 0.4.9
       '@atproto/syntax': 0.3.1
       '@atproto/xrpc': 0.6.4
       await-lock: 2.2.2
@@ -2165,6 +2177,13 @@ snapshots:
       zod: 3.23.8
 
   '@atproto/common-web@0.3.1':
+    dependencies:
+      graphemer: 1.4.0
+      multiformats: 9.9.0
+      uint8arrays: 3.0.0
+      zod: 3.23.8
+
+  '@atproto/common-web@0.4.0':
     dependencies:
       graphemer: 1.4.0
       multiformats: 9.9.0
@@ -2187,7 +2206,7 @@ snapshots:
 
   '@atproto/lex-cli@0.5.2':
     dependencies:
-      '@atproto/lexicon': 0.4.3
+      '@atproto/lexicon': 0.4.9
       '@atproto/syntax': 0.3.1
       chalk: 4.1.2
       commander: 9.5.0
@@ -2196,19 +2215,21 @@ snapshots:
       yesno: 0.4.0
       zod: 3.23.8
 
-  '@atproto/lexicon@0.4.3':
+  '@atproto/lexicon@0.4.9':
     dependencies:
-      '@atproto/common-web': 0.3.1
-      '@atproto/syntax': 0.3.1
+      '@atproto/common-web': 0.4.0
+      '@atproto/syntax': 0.4.0
       iso-datestring-validator: 2.2.2
       multiformats: 9.9.0
       zod: 3.23.8
 
   '@atproto/syntax@0.3.1': {}
 
+  '@atproto/syntax@0.4.0': {}
+
   '@atproto/xrpc@0.6.4':
     dependencies:
-      '@atproto/lexicon': 0.4.3
+      '@atproto/lexicon': 0.4.9
       zod: 3.23.8
 
   '@babel/runtime@7.23.8':
