@@ -1,5 +1,3 @@
-"use client";
-
 import ProfileCard from "@/components/contentDisplay/profileCard/ProfileCard";
 import ProfileCardSkeleton from "@/components/contentDisplay/profileCard/ProfileCardSkeleton";
 import FeedAlert from "@/components/feedback/feedAlert/FeedAlert";

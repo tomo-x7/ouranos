@@ -1,5 +1,3 @@
-"use client";
-
 import { useComposerControls } from "@/app/providers/composer";
 import Avatar from "@/components/dataDisplay/avatar/Avatar";
 import { type AppBskyFeedDefs, AppBskyFeedPost } from "@atproto/api";

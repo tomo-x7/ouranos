@@ -1,5 +1,5 @@
-"use client";
+import { context, type session } from "@/lib/auth";
 
-import { SessionProvider } from "next-auth/react";
-
-export default SessionProvider;
+export function SessionProvider({ children, session }: { children: React.ReactNode; session: session }) {
+	return <context.Provider value={session}>{children}</context.Provider>;
+}

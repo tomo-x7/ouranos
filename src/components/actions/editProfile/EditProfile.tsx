@@ -5,7 +5,6 @@ import Textarea from "@/components/inputs/textarea/Textarea";
 import { useUpdateProfile } from "@/lib/hooks/bsky/actor/useUpdateProfile";
 import type { ProfileViewDetailed } from "@atproto/api/dist/client/types/app/bsky/actor/defs";
 import * as Dialog from "@radix-ui/react-dialog";
-import Image from "next/image";
 import { useState } from "react";
 import Dropzone from "react-dropzone";
 import { BiSolidCamera } from "react-icons/bi";
@@ -76,7 +75,7 @@ export default function EditProfile(props: Props) {
 						{({ getRootProps, getInputProps }) => (
 							<div {...getRootProps()}>
 								<input {...getInputProps()} />
-								<Image
+								<img
 									src={bannerImage ? bannerImage.url : (profile?.banner ?? FallbackBanner)}
 									alt="Banner"
 									width={800}
@@ -106,7 +105,7 @@ export default function EditProfile(props: Props) {
 							{({ getRootProps, getInputProps }) => (
 								<div {...getRootProps()}>
 									<input {...getInputProps()} />
-									<Image
+									<img
 										src={avatarImage ? avatarImage.url : (profile?.avatar ?? FallbackAvatar)}
 										alt="Avatar"
 										width={95}

@@ -1,5 +1,3 @@
-"use client";
-
 import { useAgent } from "@/app/providers/agent";
 import FallbackFeed from "@/assets/images/fallbackFeed.png";
 import Button from "@/components/actions/button/Button";
@@ -7,14 +5,12 @@ import { savedFeedsQueryKey } from "@/containers/settings/myFeedsContainer/MyFee
 import { likeFeed, togglePinFeed, toggleSaveFeed, unlikeFeed } from "@/lib/api/bsky/feed";
 import useFeedInfo from "@/lib/hooks/bsky/feed/useFeedInfo";
 import { useQueryClient } from "@tanstack/react-query";
-import Image from "next/image";
-import Link from "next/link";
-import { useRouter } from "next/navigation";
 import { useLayoutEffect, useState } from "react";
 import { BiHeart, BiSolidTrash } from "react-icons/bi";
 import { BiSolidBookmarkAlt } from "react-icons/bi";
 import { BiPlus } from "react-icons/bi";
 import { BiSolidHeart } from "react-icons/bi";
+import { Link, useNavigate } from "react-router-dom";
 import FeedHeaderSkeleton from "./FeedHeaderSkeleton";
 
 interface Props {
@@ -24,7 +20,7 @@ interface Props {
 export default function FeedHeader(props: Props) {
 	const { feed } = props;
 	const agent = useAgent();
-	const router = useRouter();
+	const nav = useNavigate();
 	const [isSaved, setIsSaved] = useState<boolean | null>(null);
 	const [isPinned, setIsPinned] = useState<boolean | null>(null);
 	const [isLiked, setIsLiked] = useState<boolean | null>(null);
@@ -52,7 +48,7 @@ export default function FeedHeader(props: Props) {
 		} catch (error) {
 			setIsSaved((prev) => !prev);
 		} finally {
-			router.refresh();
+			nav(0);
 			queryClient.invalidateQueries({ queryKey: savedFeedsQueryKey });
 		}
 	};
@@ -67,7 +63,7 @@ export default function FeedHeader(props: Props) {
 		} catch (error) {
 			setIsPinned((prev) => !prev);
 		} finally {
-			router.refresh();
+			nav(0);
 			queryClient.invalidateQueries({ queryKey: savedFeedsQueryKey });
 		}
 	};
@@ -97,7 +93,7 @@ export default function FeedHeader(props: Props) {
 		<article className="border-skin-base flex flex-col gap-2 border border-x-0 border-t-0 p-3 md:rounded-t-2xl md:border">
 			<div className="flex flex-wrap items-center justify-between gap-3">
 				<div className="flex flex-wrap items-center gap-3">
-					<Image
+					<img
 						src={feedInfo.view.avatar ?? FallbackFeed}
 						alt={feedInfo.view.displayName}
 						width={60}
@@ -111,7 +107,7 @@ export default function FeedHeader(props: Props) {
 						<h3 className="text-skin-secondary break-all">
 							By{" "}
 							<Link
-								href={`/dashboard/user/${feedInfo.view.creator.handle}`}
+								to={`/dashboard/user/${feedInfo.view.creator.handle}`}
 								className="hover:text-skin-tertiary font-medium"
 							>
 								@{feedInfo.view.creator.handle}

@@ -1,5 +1,3 @@
-"use client";
-
 import NotificationItem from "@/components/contentDisplay/notification/NotificationItem";
 import NotificationSkeleton from "@/components/contentDisplay/notification/NotificationSkeleton";
 import EndOfFeed from "@/components/feedback/endOfFeed/EndOfFeed";

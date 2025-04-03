@@ -1,6 +1,6 @@
 import Badge from "@/components/feedback/badge/Badge";
-import Link from "next/link";
 import type { ReactElement } from "react";
+import { Link } from "react-router-dom";
 
 interface Props {
 	href: string;
@@ -15,7 +15,7 @@ export default function NavItem(props: Props) {
 	const { href, title, icon, activeIcon, isActive, badge } = props;
 	return (
 		<Link
-			href={href}
+			to={href}
 			className={`hover:text-skin-base flex items-center ${
 				isActive ? "text-skin-base" : "text-skin-secondary"
 			} ${title && "gap-3"}`}

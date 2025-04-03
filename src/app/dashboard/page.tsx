@@ -1,18 +1,15 @@
-"use client";
-
-import { useSession } from "next-auth/react";
-import { useRouter } from "next/navigation";
+import { useSession } from "@/lib/auth";
 import { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 
 export default function Dashboard() {
-	const { data: session, status } = useSession();
-	const router = useRouter();
-
+	const { session, status } = useSession();
+	const nav = useNavigate();
 	useEffect(() => {
-		if (status === "authenticated" && session?.user.bskySession) {
-			router.push("/dashboard/home");
+		if (status === "authenticated" && session) {
+			nav("/dashboard/home");
 		}
-	}, [router, status, session?.user.bskySession]);
+	}, [nav, status, session]);
 
 	return <></>;
 }

@@ -1,9 +1,7 @@
-"use client";
-
 import { useComposerControls } from "@/app/providers/composer";
 import { useScrollContext } from "@/app/providers/scroll";
-import { usePathname } from "next/navigation";
 import { RiQuillPenFill } from "react-icons/ri";
+import { useLocation } from "react-router-dom";
 
 interface Props {
 	float?: boolean;
@@ -13,7 +11,7 @@ export default function ComposeButton(props: Props) {
 	const { float } = props;
 	const val = useScrollContext();
 	const canUpdate = typeof window !== "undefined";
-	const pathname = usePathname();
+	const { pathname } = useLocation();
 	const userHandle = pathname.includes("/user/") && !pathname.includes("/post/") ? pathname.split("/")[3] : "";
 	const { openComposer } = useComposerControls();
 

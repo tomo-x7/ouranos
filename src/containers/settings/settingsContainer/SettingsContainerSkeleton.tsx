@@ -1,5 +1,3 @@
-"use client";
-
 function SettingsItemSkeleton() {
 	return (
 		<div className="border-skin-base flex animate-pulse items-center gap-2 border border-x-0 p-3 last:border-b md:border-x md:first:rounded-t-2xl md:last:rounded-b-2xl odd:[&:not(:last-child)]:border-b-0 even:[&:not(:last-child)]:border-b-0">

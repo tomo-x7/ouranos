@@ -1,8 +1,7 @@
 import FallbackFeed from "@/assets/images/fallbackFeed.png";
 import type { AppBskyFeedDefs } from "@atproto/api";
-import Image from "next/image";
-import Link from "next/link";
 import { BiSolidHeart } from "react-icons/bi";
+import { Link } from "react-router-dom";
 
 interface Props {
 	feed: AppBskyFeedDefs.GeneratorView;
@@ -16,10 +15,11 @@ export default function FeedEmbed(props: Props) {
 		<>
 			{depth < 2 && (
 				<Link
-					href={{
-						pathname: `/dashboard/feeds/${encodeURIComponent(feed.uri.split(":")[3].split("/")[0])}`,
-						query: { uri: feed.uri },
-					}}
+					to={`/dashboard/feeds/${encodeURIComponent(feed.uri.split(":")[3].split("/")[0])}?uri=${feed.uri}`}
+					// to={{
+					// 	pathname: `/dashboard/feeds/${encodeURIComponent(feed.uri.split(":")[3].split("/")[0])}`,
+					// 	query: { uri: feed.uri },
+					// }}
 					onClick={(e) => {
 						e.stopPropagation();
 					}}
@@ -27,7 +27,7 @@ export default function FeedEmbed(props: Props) {
 				>
 					<div className="flex flex-wrap items-center justify-between gap-3">
 						<div className="flex flex-wrap items-center gap-3">
-							<Image
+							<img
 								src={feed.avatar ?? FallbackFeed}
 								alt={feed.displayName}
 								width={40}

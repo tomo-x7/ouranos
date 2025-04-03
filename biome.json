@@ -13,7 +13,12 @@
 	},
 	"linter": {
 		"rules": {
-			"a11y": { "useKeyWithClickEvents": "off", "useAltText": "off", "noSvgWithoutTitle": "off" },
+			"a11y": {
+				"useKeyWithClickEvents": "off",
+				"useAltText": "off",
+				"noSvgWithoutTitle": "off",
+				"noRedundantAlt": "off"
+			},
 			"style": {
 				"noUselessElse": "off",
 				"useImportType": "info",

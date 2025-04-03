@@ -1,9 +1,7 @@
 import { type Agent, AppBskyActorDefs } from "@atproto/api";
 import type { SavedFeed } from "../../../../../types/feed";
-import { getAgentFromServer } from "../agent";
 
-export const getPopularFeeds = async (search?: string, agent?: Agent) => {
-	if (!agent) agent = await getAgentFromServer();
+export const getPopularFeeds = async (agent: Agent, search?: string) => {
 	const popularFeeds = await agent.app.bsky.unspecced.getPopularFeedGenerators({
 		query: search,
 	});
@@ -15,8 +13,7 @@ export const getPopularFeeds = async (search?: string, agent?: Agent) => {
 	return popularFeeds.data.feeds;
 };
 
-export const getSavedFeeds = async (agent?: Agent): Promise<SavedFeed[]> => {
-	if (!agent) agent = await getAgentFromServer();
+export const getSavedFeeds = async (agent: Agent): Promise<SavedFeed[]> => {
 	const prefs = await agent.app.bsky.actor.getPreferences();
 	if (!prefs.success) throw new Error("Could not fetch feeds");
 
@@ -97,8 +94,7 @@ export const getFeed = async (agent: Agent, uri: string, cursor: string) => {
 	return feed;
 };
 
-export const getFeedInfo = async (uri: string, agent?: Agent) => {
-	if (!agent) agent = await getAgentFromServer();
+export const getFeedInfo = async (uri: string, agent: Agent) => {
 	const feed = await agent.app.bsky.feed.getFeedGenerator({ feed: uri });
 	if (!feed.success) throw new Error("Could not fetch feed info");
 	return feed.data;
@@ -139,7 +135,6 @@ export const getUserMediaPosts = async (agent: Agent, handle: string, cursor: st
 };
 
 export const getUserLikes = async (agent: Agent, handle: string, cursor: string) => {
-	if (!agent) agent = await getAgentFromServer();
 	const likes = await agent.app.bsky.feed.getActorLikes({
 		actor: handle,
 		cursor: cursor,
@@ -204,9 +199,7 @@ export const getPost = async (agent: Agent, uri: string) => {
 	}
 };
 
-export const getPostThread = async (uri: string, agent?: Agent) => {
-	if (!agent) agent = await getAgentFromServer();
-
+export const getPostThread = async (uri: string, agent: Agent) => {
 	try {
 		const posts = await agent.getPostThread({ uri: uri });
 		return posts.data.thread;

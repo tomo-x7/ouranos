@@ -1,13 +1,11 @@
-"use client";
-
-import { signOut } from "next-auth/react";
+import { signOut } from "@/lib/auth";
 import { BiLogOut } from "react-icons/bi";
 
 export default function SignOut() {
 	return (
 		<button
 			type="button"
-			onClick={() => signOut({ callbackUrl: "/" })}
+			onClick={() => signOut(/*{ callbackUrl: "/" }*/)}
 			className="text-skin-tertiary hover:text-skin-base font-medium"
 		>
 			<BiLogOut className="text-2xl text-skin-secondary hover:text-skin-base" />

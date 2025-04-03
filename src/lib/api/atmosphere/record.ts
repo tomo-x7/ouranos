@@ -1,9 +1,6 @@
 import type AtpAgent from "@atproto/api";
-import { getAgentFromServer } from "../bsky/agent";
 
 export const getATRecords = async (did: string, collection: string, agent: AtpAgent) => {
-	if (!agent) agent = await getAgentFromServer();
-
 	const result = await agent.com.atproto.repo.listRecords({
 		repo: did,
 		collection: collection,

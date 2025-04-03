@@ -1,6 +1,3 @@
-"use client";
-
-import { usePathname } from "next/navigation";
 import NavItem from "./NavItem";
 
 import { useAgent } from "@/app/providers/agent";
@@ -10,10 +7,11 @@ import { BiCog, BiHome, BiPlanet, BiSolidCog, BiSolidHome, BiSolidPlanet } from 
 import { FaBell, FaRegBell } from "react-icons/fa6";
 import { HiClipboardList, HiOutlineClipboardList } from "react-icons/hi";
 import { PiMagnifyingGlassBold, PiMagnifyingGlassFill } from "react-icons/pi";
+import { useLocation } from "react-router-dom";
 
 export default function Navbar() {
 	const agent = useAgent();
-	const pathname = usePathname();
+	const { pathname } = useLocation();
 
 	const {
 		data: notificationsCount,

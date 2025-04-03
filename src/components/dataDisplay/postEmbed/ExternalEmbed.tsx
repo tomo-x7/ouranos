@@ -2,9 +2,8 @@ import { detectExternalEmbedType } from "@/lib/utils/embed";
 import { ExternalEmbedType } from "@/lib/utils/embed";
 import { getHostname } from "@/lib/utils/text";
 import type { AppBskyEmbedExternal } from "@atproto/api";
-import Image from "next/image";
-import Link from "next/link";
 import { SiGooglemessages } from "react-icons/si";
+import { Link } from "react-router-dom";
 import GifEmbed from "./GifEmbed";
 
 interface Props {
@@ -28,14 +27,14 @@ export default function ExternalEmbed(props: Props) {
 	return (
 		<article className="border border-skin-base mt-2 rounded-lg group">
 			<div className="bg-skin-base hover:bg-skin-secondary rounded-t-lg">
-				<Link href={embed.external.uri} target="_blank" onClick={(e) => e.stopPropagation()}>
+				<Link to={embed.external.uri} target="_blank" onClick={(e) => e.stopPropagation()}>
 					{embed.external.thumb && (
-						<Image
+						<img
 							src={embed.external.thumb}
 							alt={embed.external.description}
 							width={900}
 							height={500}
-							priority
+							fetchPriority="high"
 							className="border-b-skin-base rounded-t-lg border-b aspect-video max-h-96 object-cover group-hover:brightness-95"
 						/>
 					)}
@@ -56,7 +55,7 @@ export default function ExternalEmbed(props: Props) {
 			</div>
 			<div className="bg-skin-base border-t border-skin-base rounded-b-lg hover:bg-skin-secondary">
 				<Link
-					href={`/dashboard/topics/${encodeURIComponent(embed.external.uri)}`}
+					to={`/dashboard/topics/${encodeURIComponent(embed.external.uri)}`}
 					onClick={(e) => e.stopPropagation()}
 					className="flex flex-wrap items-center gap-2 text-skin-tertiary px-3 py-2"
 				>

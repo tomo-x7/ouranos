@@ -1,5 +1,3 @@
-"use client";
-
 import useBlockUser from "@/lib/hooks/bsky/actor/useBlockUser";
 import type { AppBskyFeedDefs } from "@atproto/api";
 import type { ViewerState } from "@atproto/api/dist/client/types/app/bsky/actor/defs";

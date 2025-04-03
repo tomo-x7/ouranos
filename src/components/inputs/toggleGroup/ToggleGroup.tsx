@@ -1,5 +1,3 @@
-"use client";
-
 import * as ToggleGroupPrimitive from "@radix-ui/react-toggle-group";
 import * as React from "react";
 import { type ReactNode, forwardRef } from "react";

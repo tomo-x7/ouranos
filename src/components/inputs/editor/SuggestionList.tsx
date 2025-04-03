@@ -3,7 +3,6 @@ import { forwardRef, useEffect, useImperativeHandle, useState } from "react";
 import type { MentionSuggestion } from "./CreateMentionSuggestions";
 
 import FallbackAvatar from "@/assets/images/fallbackAvatar.png";
-import Image from "next/image";
 
 export type SuggestionListRef = {
 	// For convenience using this SuggestionList from within the
@@ -118,7 +117,7 @@ const SuggestionList = forwardRef<SuggestionListRef, SuggestionListProps>((props
 						}`}
 					>
 						<div className="flex items-center gap-2">
-							<Image
+							<img
 								src={item?.avatar ?? FallbackAvatar}
 								alt="Avatar"
 								width={35}

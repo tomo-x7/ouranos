@@ -1,5 +1,3 @@
-"use client";
-
 import { useAgent } from "@/app/providers/agent";
 import { getPost } from "@/lib/api/bsky/feed";
 import type { AppBskyFeedDefs } from "@atproto/api";

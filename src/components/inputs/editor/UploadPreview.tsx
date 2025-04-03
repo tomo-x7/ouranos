@@ -1,7 +1,6 @@
 import Button from "@/components/actions/button/Button";
 import { MAX_ALT_TEXT_LENGTH } from "@/lib/consts/general";
 import * as Dialog from "@radix-ui/react-dialog";
-import Image from "next/image";
 import { type SetStateAction, useState } from "react";
 import { CgClose } from "react-icons/cg";
 import { PiWarningCircleFill } from "react-icons/pi";
@@ -56,7 +55,7 @@ export default function UploadPreview(props: Props) {
 										{selectedImage && (
 											<section className="animate-fade-up animate-duration-200 bg-skin-base border-skin-base fixed bottom-0 z-50 flex h-full w-full flex-col justify-between overflow-scroll rounded-t-3xl p-3 shadow-2xl md:h-fit md:border-t">
 												<div>
-													<Image
+													<img
 														src={selectedImage.url}
 														alt="Uploaded image"
 														width={200}
@@ -126,7 +125,7 @@ export default function UploadPreview(props: Props) {
 								</Dialog.Portal>
 							</Dialog.Root>
 						</div>
-						<Image
+						<img
 							src={image.url}
 							alt="Uploaded image"
 							width={200}

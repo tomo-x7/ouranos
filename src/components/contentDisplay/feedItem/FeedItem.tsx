@@ -1,5 +1,3 @@
-"use client";
-
 import { useAgent } from "@/app/providers/agent";
 import FallbackFeed from "@/assets/images/fallbackFeed.png";
 import Button from "@/components/actions/button/Button";
@@ -7,11 +5,9 @@ import { savedFeedsQueryKey } from "@/containers/settings/myFeedsContainer/MyFee
 import { toggleSaveFeed } from "@/lib/api/bsky/feed";
 import type { GeneratorView } from "@atproto/api/dist/client/types/app/bsky/feed/defs";
 import { useQueryClient } from "@tanstack/react-query";
-import Image from "next/image";
-import Link from "next/link";
-import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { BiPlus, BiSolidHeart, BiSolidTrash } from "react-icons/bi";
+import { Link, useNavigate } from "react-router-dom";
 
 interface Props {
 	feedItem: GeneratorView;
@@ -24,7 +20,7 @@ export default function FeedItem(props: Props) {
 	const agent = useAgent();
 	const { avatar, displayName, description, likeCount, creator } = feedItem;
 	const [isSaved, setIsSaved] = useState(saved);
-	const router = useRouter();
+	const nav = useNavigate();
 	const queryClient = useQueryClient();
 
 	const handleSave = async () => {
@@ -37,24 +33,25 @@ export default function FeedItem(props: Props) {
 		} catch (error) {
 			setIsSaved((prev) => !prev);
 		} finally {
-			router.refresh();
+			nav(0);
 			queryClient.invalidateQueries({ queryKey: savedFeedsQueryKey });
 		}
 	};
 
 	return (
 		<Link
-			href={{
-				pathname: `/dashboard/feeds/${encodeURIComponent(feedItem.uri.split(":")[3].split("/")[0])}`,
-				query: { uri: feedItem.uri },
-			}}
+			to={`/dashboard/feeds/${encodeURIComponent(feedItem.uri.split(":")[3].split("/")[0])}?uri=${feedItem.uri}`}
+			// to={{
+			// 	pathname: `/dashboard/feeds/${encodeURIComponent(feedItem.uri.split(":")[3].split("/")[0])}`,
+			// 	query: { uri: feedItem.uri },
+			// }}
 			className={`border-skin-base hover:bg-skin-secondary flex flex-col gap-2 border border-x-0 p-3 last:border-b md:border-x ${
 				rounded && "md:first:rounded-t-2xl"
 			} md:last:rounded-b-2xl odd:[&:not(:last-child)]:border-b-0 even:[&:not(:last-child)]:border-b-0`}
 		>
 			<div className="flex flex-wrap items-center justify-between gap-3">
 				<div className="flex flex-wrap items-center gap-3">
-					<Image
+					<img
 						src={avatar ?? FallbackFeed}
 						alt={displayName}
 						width={40}

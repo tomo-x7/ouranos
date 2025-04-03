@@ -1,5 +1,3 @@
-"use client";
-
 import Avatar from "@/components/dataDisplay/avatar/Avatar";
 import PostActions from "@/components/dataDisplay/postActions/PostActions";
 import NotFoundEmbed from "@/components/dataDisplay/postEmbed/NotFoundEmbed";
@@ -12,9 +10,8 @@ import { getPostFilter } from "@/lib/utils/feed";
 import { getPostId } from "@/lib/utils/link";
 import { getRelativeTime } from "@/lib/utils/time";
 import type { AppBskyFeedDefs } from "@atproto/api";
-import Link from "next/link";
-import { useRouter } from "next/navigation";
 import { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import type { ContentFilterResult } from "../../../../types/feed";
 import ProfileHoverCard from "../profileHoverCard/ProfileHoverCard";
 
@@ -31,10 +28,10 @@ export default function FeedPost(props: Props) {
 	const { reason } = post;
 	const { showToggle, shouldHide, message } = getPostFilter(post, filter);
 	const [hidden, setHidden] = useState(shouldHide);
-	const router = useRouter();
 	const notFound = post.post.viewer === undefined;
 	const isAuthorMuted = !notFound && post.post.author?.viewer?.muted;
 	const [showPost, setShowPost] = useState(!isAuthorMuted);
+	const nav = useNavigate();
 
 	if (notFound) {
 		return (
@@ -77,7 +74,7 @@ export default function FeedPost(props: Props) {
 		<article
 			onClick={(e) => {
 				e.stopPropagation();
-				router.push(`/dashboard/user/${post.post.author.handle}/post/${getPostId(post.post.uri)}`);
+				nav(`/dashboard/user/${post.post.author.handle}/post/${getPostId(post.post.uri)}`);
 			}}
 			className="cursor-pointer hover:bg-skin-secondary p-3"
 		>
@@ -87,7 +84,7 @@ export default function FeedPost(props: Props) {
 				<div
 					onClick={(e) => {
 						e.stopPropagation();
-						router.push(`/dashboard/user/${author.handle}`);
+						nav(`/dashboard/user/${author.handle}`);
 					}}
 					className="z-20 shrink-0 hover:brightness-90"
 				>
@@ -99,7 +96,7 @@ export default function FeedPost(props: Props) {
 					{isParent && !reason && <Threadline />}
 					<div className="flex">
 						<Link
-							href={`/dashboard/user/${author.handle}`}
+							to={`/dashboard/user/${author.handle}`}
 							onClick={(e) => {
 								e.stopPropagation();
 							}}

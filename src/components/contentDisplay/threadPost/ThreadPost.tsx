@@ -1,5 +1,3 @@
-"use client";
-
 import Avatar from "@/components/dataDisplay/avatar/Avatar";
 import PostActions from "@/components/dataDisplay/postActions/PostActions";
 import PostEmbed from "@/components/dataDisplay/postEmbed/PostEmbed";
@@ -8,9 +6,8 @@ import PostText from "@/components/dataDisplay/postText/postText";
 import { getThreadPostFilter } from "@/lib/utils/feed";
 import { getFormattedDate } from "@/lib/utils/time";
 import type { AppBskyFeedDefs } from "@atproto/api";
-import Link from "next/link";
-import { useRouter } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import type { ContentFilterResult } from "../../../../types/feed";
 import ProfileHoverCard from "../profileHoverCard/ProfileHoverCard";
 
@@ -24,7 +21,7 @@ export default function ThreadPost(props: Props) {
 	const { author } = post;
 	const { showToggle, shouldHide, message } = getThreadPostFilter(post, filter);
 	const [hidden, setHidden] = useState(shouldHide);
-	const router = useRouter();
+	const nav = useNavigate();
 	const threadPostRef = useRef<HTMLElement | null>(null);
 
 	useEffect(() => {
@@ -40,7 +37,7 @@ export default function ThreadPost(props: Props) {
 					type="button"
 					onClick={(e) => {
 						e.stopPropagation();
-						router.push(`/dashboard/user/${author.handle}`);
+						nav(`/dashboard/user/${author.handle}`);
 					}}
 					className="z-20 shrink-0 hover:brightness-90"
 				>
@@ -51,7 +48,7 @@ export default function ThreadPost(props: Props) {
 				<div className="flex grow flex-col">
 					<div className="flex flex-col">
 						<Link
-							href={`/dashboard/user/${author.handle}`}
+							to={`/dashboard/user/${author.handle}`}
 							onClick={(e) => {
 								e.stopPropagation();
 							}}

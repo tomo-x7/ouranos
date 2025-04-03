@@ -1,5 +1,3 @@
-"use client";
-
 import AtmosphereContainer from "@/containers/atmosphere/AtmosphereContainer";
 import AtmosphereContainerSkeleton from "@/containers/atmosphere/AtmosphereContainerSkeleton";
 import useProfile from "@/lib/hooks/bsky/actor/useProfile";

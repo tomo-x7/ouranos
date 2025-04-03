@@ -1,18 +1,16 @@
-"use client";
-
 import { useAgent } from "@/app/providers/agent";
 import { useScrollContext } from "@/app/providers/scroll";
 import { getSavedFeeds } from "@/lib/api/bsky/feed";
 import { useQuery } from "@tanstack/react-query";
-import { usePathname, useSearchParams } from "next/navigation";
+import { useLocation, useSearchParams } from "react-router-dom";
 import TabItem from "../tabs/TabItem";
 import Tabs from "../tabs/Tabs";
 import FeedTabsSkeleton from "./FeedTabsSkeleton";
 
 export default function FeedTabs() {
 	const agent = useAgent();
-	const pathname = usePathname();
-	const searchParams = useSearchParams();
+	const { pathname } = useLocation();
+	const [searchParams] = useSearchParams();
 	const uri = searchParams.get("uri");
 	const val = useScrollContext();
 	const canUpdate = typeof window !== "undefined" && window.innerWidth < 768;

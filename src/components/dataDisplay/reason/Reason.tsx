@@ -1,7 +1,7 @@
 import { AppBskyFeedDefs } from "@atproto/api";
 import type { ReasonPin, ReasonRepost } from "@atproto/api/dist/client/types/app/bsky/feed/defs";
-import Link from "next/link";
 import { BiRepost, BiSolidPin } from "react-icons/bi";
+import { Link } from "react-router-dom";
 
 interface Props {
 	reason: ReasonRepost | ReasonPin | { [k: string]: unknown; $type: string } | undefined;
@@ -16,7 +16,7 @@ export default function Reason(props: Props) {
 		<>
 			{isRepost && (
 				<Link
-					href={`/dashboard/user/${reason.by.handle}`}
+					to={`/dashboard/user/${reason.by.handle}`}
 					onClick={(e) => e.stopPropagation()}
 					className="max-w-fit"
 				>

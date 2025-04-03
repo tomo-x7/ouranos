@@ -1,5 +1,3 @@
-"use client";
-
 import { useAgent } from "@/app/providers/agent";
 import FeedItem from "@/components/contentDisplay/feedItem/FeedItem";
 import FeedListSkeleton from "@/components/contentDisplay/feedList/FeedListSkeleton";
@@ -17,7 +15,7 @@ export default function FeedSearchContainer(props: Props) {
 	const { data: feeds, isFetching } = useQuery({
 		queryKey: ["searchFeeds", query],
 		queryFn: async () => {
-			return getPopularFeeds(query, agent);
+			return getPopularFeeds(agent, query);
 		},
 	});
 

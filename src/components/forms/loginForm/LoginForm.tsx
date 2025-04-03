@@ -1,21 +1,17 @@
-"use client";
-
 import Button from "@/components/actions/button/Button";
 import Input from "@/components/inputs/input/Input";
 import Label from "@/components/inputs/label/Label";
 import LoadingSpinner from "@/components/status/loadingSpinner/LoadingSpinner";
-import { signIn, useSession } from "next-auth/react";
-import Image from "next/image";
-import Link from "next/link";
-import { useRouter } from "next/navigation";
+import { signIn, useSession } from "@/lib/auth";
 import { useEffect, useState } from "react";
 import { BiSolidLockAlt } from "react-icons/bi";
 import { MdAlternateEmail } from "react-icons/md";
 import { PiSignInBold } from "react-icons/pi";
+import { Link, useNavigate } from "react-router-dom";
 
 export default function LoginForm() {
-	const router = useRouter();
-	const { data: session } = useSession();
+	const nav = useNavigate();
+	const { session } = useSession();
 	const [isRedirecting, setIsRedirecting] = useState(false);
 	const [formSubmitted, setFormSubmitted] = useState(false);
 	const [handle, setHandle] = useState("");
@@ -24,24 +20,24 @@ export default function LoginForm() {
 	const [error, setError] = useState("");
 
 	useEffect(() => {
-		if (session?.user.bskySession && !formSubmitted) {
+		if (session && !formSubmitted) {
 			setIsRedirecting(true);
 			const id = setTimeout(() => {
-				router.push("/dashboard/home");
+				nav("/dashboard/home");
 			}, 1000);
 
 			return () => clearTimeout(id);
 		}
-	}, [router, session?.user.bskySession, formSubmitted]);
+	}, [nav, session, formSubmitted]);
 
 	const handleSignIn = async () => {
 		setLoading(true);
 
-		const result = await signIn("bluesky", {
+		const result = await signIn({
 			handle: handle,
 			password: password,
-			redirect: false,
-			callbackUrl: "/dashboard/home",
+			// redirect: false,
+			// callbackUrl: "/dashboard/home",
 		});
 
 		if (result?.error) {
@@ -51,14 +47,21 @@ export default function LoginForm() {
 
 		if (result?.ok) {
 			setFormSubmitted(true);
-			router.push("/dashboard/home");
+			nav("/dashboard/home");
 		}
 	};
 
 	if (isRedirecting) {
 		return (
 			<section className="bg-skin-base border border-skin-base shadow-2xl shadow-primary-light/30 max-w-xs rounded-2xl p-5">
-				<Image src="/logo.svg" alt="Ouranos logo" width={150} height={50} priority className="mx-auto mb-3" />
+				<img
+					src="/logo.svg"
+					alt="Ouranos logo"
+					width={150}
+					height={50}
+					fetchPriority="high"
+					className="mx-auto mb-3"
+				/>
 				<h1 className="text-skin-base mb-1 text-center text-xl font-semibold">Welcome Back</h1>
 
 				<p className="text-skin-secondary mb-3 text-center text-sm font-medium">
@@ -71,12 +74,12 @@ export default function LoginForm() {
 
 	return (
 		<section className="bg-skin-base border border-skin-base max-w-xs rounded-2xl p-5 shadow-2xl shadow-primary-light/30">
-			<Image src="/logo.svg" alt="Ouranos logo" width={150} height={50} className="mx-auto mb-3" />
+			<img src="/logo.svg" alt="Ouranos logo" width={150} height={50} className="mx-auto mb-3" />
 			<h1 className="text-skin-base mb-1 text-xl font-semibold">Welcome</h1>
 			<p className="text-skin-secondary mb-3 text-sm font-medium">
 				We recommend using an{" "}
 				<Link
-					href="https://bsky.app/settings/app-passwords"
+					to="https://bsky.app/settings/app-passwords"
 					target="_blank"
 					className="text-skin-link-base hover:text-skin-link-hover"
 				>

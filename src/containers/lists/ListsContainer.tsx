@@ -1,5 +1,3 @@
-"use client";
-
 import { useAgent } from "@/app/providers/agent";
 import ListItem from "@/components/contentDisplay/listItem/ListItem";
 import ListsSkeleton from "@/components/contentDisplay/lists/ListsSkeleton";

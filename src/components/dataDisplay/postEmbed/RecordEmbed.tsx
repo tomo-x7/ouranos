@@ -1,7 +1,7 @@
 import { getPostId } from "@/lib/utils/link";
 import { getRelativeTime } from "@/lib/utils/time";
 import { AppBskyEmbedRecord, type AppBskyEmbedRecordWithMedia } from "@atproto/api";
-import { useRouter } from "next/navigation";
+import { useNavigate } from "react-router-dom";
 import Avatar from "../avatar/Avatar";
 import PostText from "../postText/postText";
 import BlockedEmbed from "./BlockedEmbed";
@@ -19,7 +19,7 @@ export default function RecordEmbed(props: Props) {
 	const isBlocked = AppBskyEmbedRecord.isViewBlocked(record);
 	const notFound = AppBskyEmbedRecord.isViewNotFound(record);
 	const isViewable = AppBskyEmbedRecord.isViewRecord(record);
-	const router = useRouter();
+	const nav = useNavigate();
 
 	return (
 		<article className="flex flex-col rounded-xl">
@@ -27,7 +27,7 @@ export default function RecordEmbed(props: Props) {
 			{isViewable && depth < 1 && (
 				<div
 					onClick={(e) => {
-						router.push(`/dashboard/user/${record.author.handle}/post/${getPostId(record.uri)}`);
+						nav(`/dashboard/user/${record.author.handle}/post/${getPostId(record.uri)}`);
 						e.stopPropagation();
 					}}
 					className="border-skin-base bg-skin-base hover:bg-skin-secondary mt-2 rounded-xl border p-3 hover:cursor-pointer"

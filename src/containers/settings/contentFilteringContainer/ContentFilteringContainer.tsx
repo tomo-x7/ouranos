@@ -1,5 +1,3 @@
-"use client";
-
 import { useAgent } from "@/app/providers/agent";
 import { Switch } from "@/components/inputs/switch/Switch";
 import { ToggleGroup, ToggleGroupItem } from "@/components/inputs/toggleGroup/ToggleGroup";

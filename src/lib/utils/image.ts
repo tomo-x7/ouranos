@@ -4,7 +4,7 @@ import SmokeSignalLogo from "@/assets/images/smokeSignalLogo.png";
 import WhiteWindLogo from "@/assets/images/whtwndLogo.jpg";
 import imageCompression from "browser-image-compression";
 
-export function getAvatarSize(size?: AvatarSize): number[] {
+export function getAvatarSize(size?: "xs" | "sm" | "md" | "lg"): number[] {
 	switch (size) {
 		case "xs":
 			return [20, 20];
@@ -36,11 +36,11 @@ export async function compressImage(image: UploadImage) {
 export const getAtmosphereServiceLogo = (name: string) => {
 	switch (name) {
 		case "Smoke Signal":
-			return SmokeSignalLogo.src;
+			return SmokeSignalLogo;
 		case "White Wind":
-			return WhiteWindLogo.src;
+			return WhiteWindLogo;
 		case "Linkat":
-			return LinkatLogo.src;
+			return LinkatLogo;
 		case "Frontpage":
 			return FrontpageLogo;
 		default:

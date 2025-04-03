@@ -1,5 +1,3 @@
-"use client";
-
 import { useAgent } from "@/app/providers/agent";
 import Label from "@/components/inputs/label/Label";
 import { RadioGroup, RadioGroupItem } from "@/components/inputs/radio/Radio";

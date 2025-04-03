@@ -2,8 +2,8 @@ import Avatar from "@/components/dataDisplay/avatar/Avatar";
 import ViewerInfo from "@/components/dataDisplay/viewerInfo/ViewerInfo";
 import { isInvalidHandle } from "@/lib/utils/text";
 import type { ProfileView } from "@atproto/api/dist/client/types/app/bsky/actor/defs";
-import Link from "next/link";
 import { memo } from "react";
+import { Link } from "react-router-dom";
 
 interface Props {
 	profile: ProfileView;
@@ -15,7 +15,7 @@ const ProfileCard = memo(function ProfileCard(props: Props) {
 
 	return (
 		<Link
-			href={`/dashboard/user/${profile.handle}`}
+			to={`/dashboard/user/${profile.handle}`}
 			className={`border-skin-base border border-x-0 p-3 md:border-x ${
 				rounded && "md:first:rounded-t-2xl"
 			} hover:bg-skin-secondary last:border-b md:last:rounded-b-2xl odd:[&:not(:last-child)]:border-b-0 even:[&:not(:last-child)]:border-b-0`}

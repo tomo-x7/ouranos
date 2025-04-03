@@ -1,5 +1,3 @@
-"use client";
-
 import { useAgent } from "@/app/providers/agent";
 import Button from "@/components/actions/button/Button";
 import FeedPostSkeleton from "@/components/contentDisplay/feedPost/FeedPostSkeleton";
@@ -9,6 +7,7 @@ import NotFoundEmbed from "@/components/dataDisplay/postEmbed/NotFoundEmbed";
 import WhoCanReply from "@/components/feedback/WhoCanReply/WhoCanReply";
 import FeedAlert from "@/components/feedback/feedAlert/FeedAlert";
 import { getPostThread } from "@/lib/api/bsky/feed";
+import { useSession } from "@/lib/auth";
 import { MAX_REPLY_CONTAINERS } from "@/lib/consts/thread";
 import usePreferences from "@/lib/hooks/bsky/actor/usePreferences";
 import useProfile from "@/lib/hooks/bsky/actor/useProfile";
@@ -18,9 +17,8 @@ import { replyIncludes } from "@/lib/utils/text";
 import { AppBskyFeedDefs } from "@atproto/api";
 import type { PostView } from "@atproto/api/dist/client/types/app/bsky/feed/defs";
 import { useQuery } from "@tanstack/react-query";
-import { useSession } from "next-auth/react";
-import { useRouter, useSearchParams } from "next/navigation";
 import { useEffect, useState } from "react";
+import { useNavigate, useSearchParams } from "react-router-dom";
 import ParentContainer from "./ParentContainer";
 import RepliesContainer from "./RepliesContainer";
 import ThreadActionsContainer from "./ThreadActionsContainer";
@@ -33,12 +31,12 @@ interface Props {
 export default function PostThreadContainer(props: Props) {
 	const { id, handle } = props;
 	const agent = useAgent();
-	const searchParams = useSearchParams();
+	const searchParams = useSearchParams()[0];
 	const search = searchParams.get("query") ?? "";
 	const [maxReplies, setMaxReplies] = useState(MAX_REPLY_CONTAINERS);
-	const router = useRouter();
-	const { data: session } = useSession();
-	const { data: profile } = useProfile(session?.user.bskySession.handle);
+	const nav = useNavigate();
+	const { session } = useSession();
+	const { data: profile } = useProfile(session?.handle!);
 
 	const {
 		data: thread,
@@ -92,7 +90,7 @@ export default function PostThreadContainer(props: Props) {
 				{AppBskyFeedDefs.isBlockedAuthor(thread) && <BlockedEmbed depth={0} />}
 				{isError && <FeedAlert variant="badResponse" message={error.message} standalone={true} />}
 				<div className="mt-3 flex justify-center">
-					<Button onClick={() => router.push("/dashboard/home")}>Go Home</Button>
+					<Button onClick={() => nav("/dashboard/home")}>Go Home</Button>
 				</div>
 			</section>
 		);

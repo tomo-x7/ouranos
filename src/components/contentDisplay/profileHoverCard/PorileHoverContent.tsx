@@ -3,11 +3,11 @@ import KnownFollowers from "@/components/dataDisplay/knownFollowers/KnownFollowe
 import ProfileBio from "@/components/dataDisplay/profileBio/ProfileBio";
 import UserStats from "@/components/dataDisplay/userStats/UserStats";
 import ViewerInfo from "@/components/dataDisplay/viewerInfo/ViewerInfo";
+import { useSession } from "@/lib/auth";
 import useProfile from "@/lib/hooks/bsky/actor/useProfile";
 import useKnownFollowers from "@/lib/hooks/bsky/social/useKnownFollowers";
 import { isInvalidHandle } from "@/lib/utils/text";
-import { useSession } from "next-auth/react";
-import Link from "next/link";
+import { Link } from "react-router-dom";
 import ProfileHoverCardSkeleton from "./ProfileHoverCardSkeleton";
 
 interface Props {
@@ -17,7 +17,7 @@ interface Props {
 export default function ProfileHoverContent(props: Props) {
 	const { handle } = props;
 	const { data: profile, isLoading, error } = useProfile(handle);
-	const { data: session } = useSession();
+	const { session } = useSession();
 
 	const {
 		knownFollowers,
@@ -39,13 +39,13 @@ export default function ProfileHoverContent(props: Props) {
 		<article className="flex flex-col gap-2 grow">
 			<div className="flex flex-wrap justify-between gap-3">
 				<div className="flex flex-wrap items-start gap-2">
-					<Link href={`/dashboard/user/${profile.handle}`} className="hover:brightness-90">
+					<Link to={`/dashboard/user/${profile.handle}`} className="hover:brightness-90">
 						<Avatar src={profile.avatar?.replace("avatar", "avatar_thumbnail")} size="md" />
 					</Link>
 					<div className="flex flex-col">
 						<div className="flex flex-wrap gap-x-1.5">
 							<Link
-								href={`/dashboard/user/${profile.handle}`}
+								to={`/dashboard/user/${profile.handle}`}
 								className="text-skin-base font-semibold hover:text-skin-secondary"
 							>
 								{profile.displayName || profile.handle}
@@ -58,7 +58,7 @@ export default function ProfileHoverContent(props: Props) {
 							<ViewerInfo text="Invalid Handle" />
 						) : (
 							<Link
-								href={`/dashboard/user/${profile.handle}`}
+								to={`/dashboard/user/${profile.handle}`}
 								className="text-skin-tertiary break-all font-medium"
 							>
 								@{profile?.handle}
@@ -77,14 +77,11 @@ export default function ProfileHoverContent(props: Props) {
 			)}
 			{profile?.description && <ProfileBio description={profile.description} truncate={true} />}
 
-			{!isBlocked &&
-				profile?.handle &&
-				profile.viewer?.knownFollowers &&
-				profile.handle !== session?.user.handle && (
-					<div className="mt-2 inline-block">
-						<KnownFollowers handle={profile.handle} />
-					</div>
-				)}
+			{!isBlocked && profile?.handle && profile.viewer?.knownFollowers && profile.handle !== session?.handle && (
+				<div className="mt-2 inline-block">
+					<KnownFollowers handle={profile.handle} />
+				</div>
+			)}
 		</article>
 	);
 }

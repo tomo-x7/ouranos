@@ -1,5 +1,5 @@
-import { getService } from "@/app/api/auth/identity/actions";
 import { createAgent } from "@/lib/api/bsky/agent";
+import { getService } from "@/lib/auth";
 import { jwtDecode } from "jwt-decode";
 import NextAuth, { type NextAuthOptions, type Session, type User } from "next-auth";
 import type { JWT } from "next-auth/jwt";

@@ -1,5 +1,3 @@
-"use client";
-
 import useScrollTranslation from "@/lib/hooks/useScrollTranslation";
 import { type ReactNode, createContext, useContext } from "react";
 

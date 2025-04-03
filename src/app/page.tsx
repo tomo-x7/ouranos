@@ -1,21 +1,20 @@
-import Image from "next/image";
-import Link from "next/link";
+import { Link } from "react-router-dom";
 
-export default function Home() {
+export function Home() {
 	return (
 		<main className="mx-auto mt-0 p-5 md:mt-16">
 			<header className="mx-auto flex max-w-xl items-center justify-between animate-fade">
 				<div className="flex items-center gap-3">
-					<Image
+					<img
 						src="/ouranos.svg"
 						alt="Ouranos logo"
 						width={40}
 						height={40}
 						className="block transition-transform duration-700 ease-in-out hover:rotate-180"
 					/>
-					<Image src="/ouranosText.svg" alt="Ouranos text" width={70} height={20} />
+					<img src="/ouranosText.svg" alt="Ouranos text" width={70} height={20} />
 				</div>
-				<Link href="/about" className="text-skin-secondary hover:text-skin-base font-medium">
+				<Link to="/about" className="text-skin-secondary hover:text-skin-base font-medium">
 					About
 				</Link>
 			</header>
@@ -32,14 +31,14 @@ export default function Home() {
 
 				<div className="mt-6 flex flex-wrap gap-3">
 					<Link
-						href="https://bsky.app"
+						to="https://bsky.app"
 						target="_blank"
 						className="text-skin-base bg-skin-muted/70 hover:bg-skin-muted rounded-full px-5 py-3 font-medium"
 					>
 						Sign up on Bluesky
 					</Link>
 					<Link
-						href="/login"
+						to="/login"
 						className="text-skin-inverted bg-skin-inverted hover:bg-skin-inverted-muted rounded-full px-5 py-3 font-medium"
 					>
 						Log in
@@ -47,12 +46,13 @@ export default function Home() {
 				</div>
 			</section>
 			<div className="animate-fade-up animate-delay-300 mx-auto mt-8 max-w-fit">
-				<Image
+				<img
 					src="/images/screenshot.png"
 					alt="Ouranos desktop screenshot"
 					width={1000}
 					height={830}
-					priority
+					// priority
+					fetchPriority="high"
 				/>
 			</div>
 			<footer className="animate-fade-up animate-delay-500 text-skin-tertiary mt-16 text-center text-sm font-medium">

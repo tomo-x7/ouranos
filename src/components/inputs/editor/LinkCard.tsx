@@ -1,7 +1,6 @@
 import Button from "@/components/actions/button/Button";
 import useGetLinkMeta from "@/lib/hooks/useGetLinkMeta";
 import { getHostname } from "@/lib/utils/text";
-import Image from "next/image";
 import { type Dispatch, type SetStateAction, useCallback, useEffect, useState } from "react";
 import { CgClose } from "react-icons/cg";
 
@@ -72,13 +71,13 @@ export default function LinkCard(props: Props) {
 			</Button>
 			{data?.image && showImage && (
 				<div className="relative h-44 w-full">
-					<Image
+					<img
 						src={data.image}
-						alt="Link image"
+						alt="Linkcard"
 						onError={onErrorImage}
-						fill
-						priority
-						className="border-skin-base rounded-t-2xl border-b object-cover"
+						style={{}}
+						fetchPriority="high"
+						className="border-skin-base rounded-t-2xl border-b object-cover absolute top-0 left-0 w-full h-full"
 					/>
 				</div>
 			)}

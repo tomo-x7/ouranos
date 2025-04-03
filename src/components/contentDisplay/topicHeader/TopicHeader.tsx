@@ -1,12 +1,9 @@
-"use client";
-
 import FeedAlert from "@/components/feedback/feedAlert/FeedAlert";
 import useGetLinkMeta from "@/lib/hooks/useGetLinkMeta";
 import { getHostname } from "@/lib/utils/text";
-import Image from "next/image";
-import Link from "next/link";
 import { useState } from "react";
 import { BiLinkExternal } from "react-icons/bi";
+import { Link } from "react-router-dom";
 import TopicHeaderSkeleton from "./TopicHeaderSkeleton";
 
 interface Props {
@@ -29,7 +26,7 @@ export default function TopicHeader(props: Props) {
 			)}
 
 			{data?.image && !hideImage && (
-				<Image
+				<img
 					src={data.image}
 					alt={`Image from ${url}`}
 					width={900}
@@ -43,7 +40,7 @@ export default function TopicHeader(props: Props) {
 				<div className="p-3">
 					<div className="flex flex-col gap-1">
 						<Link
-							href={url}
+							to={url}
 							target="_blank"
 							className="flex flex-wrap items-center gap-2 mt-2 font-medium text-skin-tertiary hover:text-skin-base"
 						>

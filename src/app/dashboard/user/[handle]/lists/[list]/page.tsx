@@ -1,9 +1,11 @@
+import { useAgent } from "@/app/providers/agent";
 import ListContainer from "@/containers/lists/ListContainer";
 import { getListInfo } from "@/lib/api/bsky/list";
 import type { Metadata } from "next";
 
 export async function generateMetadata({ searchParams }: Props): Promise<Metadata> {
-	const listInfo = await getListInfo(searchParams.uri);
+	const agent = useAgent();
+	const listInfo = await getListInfo(searchParams.uri, agent);
 	const title = listInfo.list.name ? listInfo.list.name : "List";
 
 	return {

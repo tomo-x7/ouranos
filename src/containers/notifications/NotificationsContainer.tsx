@@ -1,5 +1,3 @@
-"use client";
-
 import TabItem from "@/components/navigational/tabs/TabItem";
 import Tabs from "@/components/navigational/tabs/Tabs";
 import { NOTIFICATION_FILTER } from "@/lib/consts/notification";

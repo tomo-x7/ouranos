@@ -2,7 +2,6 @@ import FallbackAvatar from "@/assets/images/fallbackAvatar.png";
 import type { ProfileViewDetailed } from "@atproto/api/dist/client/types/app/bsky/actor/defs";
 import { EditorContent } from "@tiptap/react";
 import type { Editor } from "@tiptap/react";
-import Image from "next/image";
 
 interface Props {
 	editor: Editor;
@@ -16,7 +15,7 @@ export default function TextEdit(props: Props) {
 	return (
 		<div>
 			<div className={`flex gap-3 ${isReply && "mt-3"}`}>
-				<Image
+				<img
 					src={author?.avatar?.replace("avatar", "avatar_thumbnail") ?? FallbackAvatar}
 					alt="Avatar"
 					width={50}

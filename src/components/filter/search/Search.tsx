@@ -1,10 +1,8 @@
-"use client";
-
 import Button from "@/components/actions/button/Button";
-import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { useState } from "react";
 import { BiSearch } from "react-icons/bi";
 import { CgClose } from "react-icons/cg";
+import { useLocation, useNavigate, useSearchParams } from "react-router-dom";
 import { useDebouncedCallback } from "use-debounce";
 
 interface Props {
@@ -14,9 +12,9 @@ interface Props {
 
 export default function Search(props: Props) {
 	const { placeholder, autoFocus = false } = props;
-	const searchParams = useSearchParams();
-	const pathname = usePathname();
-	const { replace } = useRouter();
+	const [searchParams] = useSearchParams();
+	const { pathname } = useLocation();
+	const nav = useNavigate();
 	const [search, setSearch] = useState(searchParams.get("query") ?? "");
 
 	const handleSearch = useDebouncedCallback((term) => {
@@ -26,7 +24,7 @@ export default function Search(props: Props) {
 		} else {
 			params.delete("query");
 		}
-		replace(`${pathname}?${params.toString()}`, { scroll: false });
+		nav(`${pathname}?${params.toString()}`, { replace: true, preventScrollReset: true /*,scroll: false*/ });
 	}, 300);
 
 	return (
@@ -52,7 +50,7 @@ export default function Search(props: Props) {
 				<Button
 					className="absolute right-3 top-1/2 -translate-y-1/2"
 					onClick={() => {
-						replace(`${pathname}`, { scroll: false });
+						nav(`${pathname}`, { replace: true, preventScrollReset: true /*scroll: false*/ });
 						setSearch("");
 					}}
 				>

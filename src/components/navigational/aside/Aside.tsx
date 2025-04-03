@@ -1,8 +1,6 @@
-"use client";
-
 import ComposeButton from "@/components/actions/composeButton/ComposeButton";
 import Avatar from "@/components/dataDisplay/avatar/Avatar";
-import Link from "next/link";
+import { Link } from "react-router-dom";
 
 interface Props {
 	handle: string;
@@ -16,7 +14,7 @@ export default function Aside(props: Props) {
 		<aside className="sticky top-6 hidden h-full md:block">
 			<div className="flex flex-col items-center gap-3 lg:flex-row border border-skin-base p-2 rounded-full">
 				<ComposeButton />
-				<Link href={`/dashboard/user/${handle}`} className="max-w-[7rem] truncate hover:brightness-90">
+				<Link to={`/dashboard/user/${handle}`} className="max-w-[7rem] truncate hover:brightness-90">
 					<Avatar src={avatar?.replace("avatar", "avatar_thumbnail")} />
 				</Link>
 			</div>

@@ -3,6 +3,11 @@
 @tailwind utilities;
 
 @layer base {
+	@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap");
+	body {
+		font-family: "Inter", sans-serif;
+		font-display: swap;
+	}
 	:root {
 		/* Brand */
 		--color-primary: 169, 74, 255;

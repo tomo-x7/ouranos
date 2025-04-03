@@ -10,7 +10,7 @@ import { PiWarningCircleFill } from "react-icons/pi";
 import { VscMention } from "react-icons/vsc";
 import type { FeedAlert, ThreadgateSetting } from "../../../types/feed";
 
-export function getAlertIcon(variant: Alert) {
+export function getAlertIcon(variant: "success" | "error" | "info" | "warning") {
 	switch (variant) {
 		case "success":
 			return <FaCircleCheck className="text-skin-icon-base text-2xl" />;

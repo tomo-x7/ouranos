@@ -1,5 +1,3 @@
-"use client";
-
 import ListHeader from "@/components/contentDisplay/listHeader/ListHeader";
 import { useState } from "react";
 import FeedContainer from "../posts/FeedContainer";

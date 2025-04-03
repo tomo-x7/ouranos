@@ -1,7 +1,6 @@
 import { getStarterPackHref, getStarterPackImage } from "@/lib/utils/link";
 import { type AppBskyGraphDefs, AppBskyGraphStarterpack } from "@atproto/api";
-import Image from "next/image";
-import Link from "next/link";
+import { Link } from "react-router-dom";
 
 interface Props {
 	embed: AppBskyGraphDefs.StarterPackViewBasic;
@@ -22,20 +21,20 @@ export default function StarterPackEmbed(props: Props) {
 			{depth < 2 && (
 				<article className="border border-skin-base mt-2 rounded-lg group">
 					<div className="bg-skin-base hover:bg-skin-secondary rounded-lg">
-						<Link href={starterPackHref} target="_blank" onClick={(e) => e.stopPropagation()}>
+						<Link to={starterPackHref} target="_blank" onClick={(e) => e.stopPropagation()}>
 							{imageUri && (
-								<Image
+								<img
 									src={imageUri}
-									alt="Starter pack image"
+									alt="Starter pack "
 									width={900}
 									height={500}
-									priority
+									fetchPriority="high"
 									className="border-b-skin-base rounded-t-lg border-b aspect-auto max-h-96 object-cover group-hover:brightness-95"
 								/>
 							)}
 							<div className="flex flex-col gap-2 p-3">
 								<div className="flex flex-wrap gap-2">
-									<Image src={"/starterPack.svg"} alt="Starter pack icon" width={40} height={40} />
+									<img src={"/starterPack.svg"} alt="Starter pack icon" width={40} height={40} />
 									<div className="flex flex-col">
 										<span className="text-skin-base font-medium [overflow-wrap:anywhere]">
 											{embed.record.name}

@@ -1,18 +1,16 @@
-"use client";
-
 import { useAgent } from "@/app/providers/agent";
 import { getUnreadNotificationsCount } from "@/lib/api/bsky/notification";
 import { useQuery } from "@tanstack/react-query";
-import { usePathname } from "next/navigation";
 import { BiHome, BiPlanet, BiSolidHome, BiSolidPlanet } from "react-icons/bi";
 import { FaBell } from "react-icons/fa";
 import { FaRegBell } from "react-icons/fa6";
 import { HiClipboardList, HiOutlineClipboardList } from "react-icons/hi";
 import { PiMagnifyingGlassBold, PiMagnifyingGlassFill } from "react-icons/pi";
+import { useLocation } from "react-router-dom";
 import NavItem from "../navbar/NavItem";
 
 export default function AppBar() {
-	const pathname = usePathname();
+	const { pathname } = useLocation();
 	const agent = useAgent();
 
 	const {

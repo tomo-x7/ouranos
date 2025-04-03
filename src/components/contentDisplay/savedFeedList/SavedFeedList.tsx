@@ -1,8 +1,10 @@
+import { useAgent } from "@/app/providers/agent";
 import { getSavedFeeds } from "@/lib/api/bsky/feed";
 import SavedFeedItem from "../savedFeedItem/SavedFeedItem";
 
 export default async function SavedFeedList() {
-	const savedFeeds = await getSavedFeeds();
+	const agent = useAgent();
+	const savedFeeds = await getSavedFeeds(agent);
 
 	return (
 		<section className="flex flex-col">

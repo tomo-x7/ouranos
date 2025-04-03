@@ -1,5 +1,4 @@
 import SkeletonBanner from "@/assets/images/skeletonBanner.png";
-import Image from "next/image";
 
 function Skeleton() {
 	return (
@@ -24,7 +23,7 @@ export default function ProfileHeaderSkeleton() {
 	return (
 		<section className="border-skin-base animate-pulse overflow-hidden md:rounded-t-2xl md:border">
 			<div className="relative">
-				<Image
+				<img
 					src={SkeletonBanner}
 					alt="Banner"
 					width={800}

@@ -1,8 +1,10 @@
+import { useAgent } from "@/app/providers/agent";
 import { getSuggestions } from "@/lib/api/bsky/actor";
 import ProfileCard from "../profileCard/ProfileCard";
 
 export default async function WhoToFollowList() {
-	const suggestions = await getSuggestions();
+	const agent = useAgent();
+	const suggestions = await getSuggestions(agent);
 
 	return (
 		<section className="flex flex-col">

@@ -1,5 +1,3 @@
-"use client";
-
 import Button from "@/components/actions/button/Button";
 import FeedAlert from "@/components/feedback/feedAlert/FeedAlert";
 import { getATRecords } from "@/lib/api/atmosphere/record";
@@ -8,7 +6,6 @@ import { getPDS } from "@/lib/api/bsky/identity/service";
 import { getAtmosphereServiceLogo } from "@/lib/utils/image";
 import * as ScrollArea from "@radix-ui/react-scroll-area";
 import { useQuery } from "@tanstack/react-query";
-import Image from "next/image";
 import { useLayoutEffect, useState } from "react";
 import AtmosphereContainerSkeleton from "./AtmosphereContainerSkeleton";
 import AtmosphereNotFoundContainer from "./AtmosphereNotFoundContainer";
@@ -116,7 +113,7 @@ export default function AtmosphereContainer(props: Props) {
 													: "bg-skin-tertiary text-skin-secondary hover:brightness-95"
 											} font-medium rounded-full px-2.5 py-2 min-w-fit gap-2`}
 										>
-											<Image
+											<img
 												src={getAtmosphereServiceLogo(c.name)}
 												alt={`${c} logo`}
 												width={24}

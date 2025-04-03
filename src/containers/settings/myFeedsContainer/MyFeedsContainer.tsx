@@ -1,5 +1,3 @@
-"use client";
-
 import { useAgent } from "@/app/providers/agent";
 import FallbackFeed from "@/assets/images/fallbackFeed.png";
 import Button from "@/components/actions/button/Button";
@@ -7,10 +5,9 @@ import Alert from "@/components/feedback/alert/Alert";
 import { getSavedFeeds } from "@/lib/api/bsky/feed";
 import useSaveFeed from "@/lib/hooks/bsky/feed/useSaveFeed";
 import { useQuery } from "@tanstack/react-query";
-import Image from "next/image";
-import Link from "next/link";
 import { BiSolidTrash } from "react-icons/bi";
 import { BiSolidBookmarkAlt } from "react-icons/bi";
+import { Link } from "react-router-dom";
 import type { SavedFeed } from "../../../../types/feed";
 import MyFeedsContainerSkeleton from "./MyFeedsContainerSkeleton";
 
@@ -29,14 +26,15 @@ function FeedItem(props: FeedItemProps) {
 
 	return (
 		<Link
-			href={{
-				pathname: `/dashboard/feeds/${encodeURIComponent(feedItem.uri.split(":")[3].split("/")[0])}`,
-				query: { uri: feedItem.uri },
-			}}
+			to={`/dashboard/feeds/${encodeURIComponent(feedItem.uri.split(":")[3].split("/")[0])}?uri=${feedItem.uri}`}
+			// to={{
+			// 	pathname: `/dashboard/feeds/${encodeURIComponent(feedItem.uri.split(":")[3].split("/")[0])}`,
+			// 	query: { uri: feedItem.uri },
+			// }}
 			className="border-skin-base hover:bg-skin-secondary flex items-center justify-between gap-2 border border-x-0 p-3 last:border-b md:border-x md:first:rounded-t-2xl md:last:rounded-b-2xl odd:[&:not(:last-child)]:border-b-0 even:[&:not(:last-child)]:border-b-0"
 		>
 			<div className="flex flex-wrap items-center gap-3">
-				<Image
+				<img
 					src={avatar ?? FallbackFeed}
 					alt={displayName}
 					width={40}

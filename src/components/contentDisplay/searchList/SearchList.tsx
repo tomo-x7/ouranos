@@ -1,11 +1,9 @@
-"use client";
-
 import TabItem from "@/components/navigational/tabs/TabItem";
 import Tabs from "@/components/navigational/tabs/Tabs";
 import FeedSearchContainer from "@/containers/search/FeedSearchContainer";
 import PostSearchContainer from "@/containers/search/PostSearchContainer";
 import UserSearchContainer from "@/containers/search/UserSearchContainer";
-import { useSession } from "next-auth/react";
+import { useSession } from "@/lib/auth";
 import { useState } from "react";
 
 interface Props {
@@ -15,15 +13,15 @@ interface Props {
 export default function SearchList(props: Props) {
 	const { query } = props;
 	const [currentTab, setCurrentTab] = useState<"top" | "latest" | "users" | "feeds">("top");
-	const { data: session } = useSession();
+	const { session } = useSession();
 
 	const handleTabChange = (tab: "top" | "latest" | "users" | "feeds") => {
 		setCurrentTab(tab);
 	};
 
 	const onSearchPost = (query: string) => {
-		if (query.trim() === "from:me" && session?.user.handle) {
-			return `from:${session.user.handle}`;
+		if (query.trim() === "from:me" && session?.handle) {
+			return `from:${session.handle}`;
 		}
 
 		return query;

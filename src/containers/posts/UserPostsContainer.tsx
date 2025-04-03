@@ -1,5 +1,3 @@
-"use client";
-
 import { useAgent } from "@/app/providers/agent";
 import ComposeButton from "@/components/actions/composeButton/ComposeButton";
 import FeedPostSkeleton from "@/components/contentDisplay/feedPost/FeedPostSkeleton";

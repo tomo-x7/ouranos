@@ -1,7 +1,6 @@
 import type { ComposerOptionsPostRef } from "@/app/providers/composer";
 import FallbackAvatar from "@/assets/images/fallbackAvatar.png";
 import Threadline from "@/components/dataDisplay/threadLine/ThreadLine";
-import Image from "next/image";
 import { useState } from "react";
 
 interface Props {
@@ -22,7 +21,7 @@ export default function ReplyToPreview(props: Props) {
 	return (
 		<article onClick={toggleShowMore} className="relative flex cursor-pointer items-start gap-3 rounded-2xl p-2">
 			<Threadline className="left-8" />
-			<Image
+			<img
 				src={author.avatar?.replace("avatar", "avatar_thumbnail") ?? FallbackAvatar}
 				alt="Avatar"
 				width={50}

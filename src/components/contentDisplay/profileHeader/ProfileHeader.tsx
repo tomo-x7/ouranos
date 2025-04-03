@@ -1,5 +1,3 @@
-"use client";
-
 import FallbackAvatar from "@/assets/images/fallbackAvatar.png";
 import FallbackBanner from "@/assets/images/fallbackBanner.png";
 import Button from "@/components/actions/button/Button";
@@ -14,11 +12,10 @@ import UserStats from "@/components/dataDisplay/userStats/UserStats";
 import ViewerInfo from "@/components/dataDisplay/viewerInfo/ViewerInfo";
 import Alert from "@/components/feedback/alert/Alert";
 import ProfileTabs from "@/components/navigational/profileTabs/ProfileTabs";
+import { useSession } from "@/lib/auth";
 import usePreferences from "@/lib/hooks/bsky/actor/usePreferences";
 import useProfile from "@/lib/hooks/bsky/actor/useProfile";
 import { isInvalidHandle } from "@/lib/utils/text";
-import { useSession } from "next-auth/react";
-import Image from "next/image";
 import { useState } from "react";
 import ProfileHeaderSkeleton from "./ProfileHeaderSkeleton";
 
@@ -30,7 +27,7 @@ export default function ProfileHeader(props: Props) {
 	const { handle } = props;
 	const [showAvatar, setShowAvatar] = useState(false);
 	const [showBanner, setShowBanner] = useState(false);
-	const { data: session } = useSession();
+	const { session } = useSession();
 
 	const { data: profile, isLoading, isFetching, isRefetching, toggleFollow } = useProfile(handle);
 	const isBlocked = !!profile?.viewer?.blocking;
@@ -49,12 +46,12 @@ export default function ProfileHeader(props: Props) {
 				<section className="border-skin-base overflow-hidden border-0 md:border-y border-b md:rounded-t-2xl md:border-x">
 					<div className="relative">
 						{isBlocked || hasBlockedYou ? (
-							<Image
+							<img
 								src={profile?.banner ?? FallbackBanner}
 								alt="Banner"
 								width={800}
 								height={192}
-								priority
+								fetchPriority="high"
 								className="h-40 object-cover opacity-30 contrast-75 md:h-48"
 							/>
 						) : (
@@ -64,12 +61,12 @@ export default function ProfileHeader(props: Props) {
 									profile.banner ? "cursor-pointer hover:brightness-90" : "cursor-default"
 								}`}
 							>
-								<Image
+								<img
 									src={profile?.banner ?? FallbackBanner}
 									alt="Banner"
 									width={800}
 									height={192}
-									priority
+									fetchPriority="high"
 									className="h-40 object-cover md:h-48"
 								/>
 							</Button>
@@ -77,7 +74,7 @@ export default function ProfileHeader(props: Props) {
 
 						<div className="absolute bottom-0 translate-y-1/2 transform px-3">
 							{isBlocked || hasBlockedYou ? (
-								<Image
+								<img
 									src={profile?.avatar ?? FallbackAvatar}
 									alt="Avatar"
 									width={95}
@@ -89,12 +86,12 @@ export default function ProfileHeader(props: Props) {
 									className="bg-skin-base rounded-full border-4 border-transparent"
 									onClick={() => setShowAvatar(true)}
 								>
-									<Image
+									<img
 										src={profile?.avatar?.replace("avatar", "avatar_thumbnail") ?? FallbackAvatar}
 										alt="Avatar"
 										width={95}
 										height={95}
-										priority
+										fetchPriority="high"
 										className={`rounded-full object-cover ${
 											profile.avatar ? "cursor-pointer hover:brightness-90" : "cursor-default"
 										}`}
@@ -103,22 +100,22 @@ export default function ProfileHeader(props: Props) {
 							)}
 						</div>
 					</div>
-					{profile?.viewer && session?.user.handle && (
+					{profile?.viewer && session?.handle && (
 						<div className="mr-3 mt-3 flex">
 							<div className="ml-auto flex gap-2">
 								<UserActions
 									author={profile}
 									viewer={profile.viewer}
-									viewerHandle={session?.user.handle}
-									viewerDID={session?.user.id}
+									viewerHandle={session?.handle}
+									viewerDID={session?.did}
 								/>
 								<Follow
 									onToggleFollow={toggleFollow}
 									author={profile}
 									viewer={profile.viewer}
-									viewerDID={session?.user.id}
+									viewerDID={session?.did}
 								/>
-								{handle === session?.user.handle && <EditProfile profile={profile} />}
+								{handle === session?.handle && <EditProfile profile={profile} />}
 							</div>
 						</div>
 					)}
@@ -158,7 +155,7 @@ export default function ProfileHeader(props: Props) {
 						{!isBlocked &&
 							profile?.handle &&
 							profile.viewer?.knownFollowers &&
-							profile.handle !== session?.user.handle && (
+							profile.handle !== session?.handle && (
 								<div className="mt-2">
 									<KnownFollowers handle={profile.handle} />
 								</div>

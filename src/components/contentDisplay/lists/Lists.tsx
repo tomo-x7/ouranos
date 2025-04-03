@@ -1,18 +1,16 @@
-"use client";
-
 import { useAgent } from "@/app/providers/agent";
 import FeedAlert from "@/components/feedback/feedAlert/FeedAlert";
 import LoadingSpinner from "@/components/status/loadingSpinner/LoadingSpinner";
 import { getLists } from "@/lib/api/bsky/list";
+import { useSession } from "@/lib/auth";
 import { useInfiniteQuery } from "@tanstack/react-query";
-import { useSession } from "next-auth/react";
 import { Fragment } from "react";
 import InfiniteScroll from "react-infinite-scroll-component";
 import ListItem from "../listItem/ListItem";
 import ListsSkeleton from "./ListsSkeleton";
 
 export default function Lists() {
-	const { data: session } = useSession();
+	const { session } = useSession();
 	const agent = useAgent();
 
 	const {
@@ -27,8 +25,8 @@ export default function Lists() {
 	} = useInfiniteQuery({
 		queryKey: ["lists"],
 		queryFn: async ({ pageParam }) => {
-			if (!session?.user.id) return;
-			return getLists(session.user.id, pageParam, agent);
+			if (!session?.did) return;
+			return getLists(session.did, pageParam, agent);
 		},
 		initialPageParam: "",
 		getNextPageParam: (lastPage) => lastPage?.cursor,

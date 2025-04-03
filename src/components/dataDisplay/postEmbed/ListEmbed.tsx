@@ -1,6 +1,6 @@
 import type { AppBskyGraphDefs } from "@atproto/api";
-import Link from "next/link";
 import { BsFillPeopleFill, BsPersonFillSlash } from "react-icons/bs";
+import { Link } from "react-router-dom";
 
 interface Props {
 	list: AppBskyGraphDefs.ListView;
@@ -23,10 +23,11 @@ export default function ListEmbed(props: Props) {
 		<>
 			{depth < 1 && (
 				<Link
-					href={{
-						pathname: `/dashboard/user/${list.creator.handle}/lists/${encodeURIComponent(formattedUri)}`,
-						query: { uri: list.uri },
-					}}
+					to={`/dashboard/user/${list.creator.handle}/lists/${encodeURIComponent(formattedUri)}?uri=${list.uri}`}
+					// to={{
+					// 	pathname: `/dashboard/user/${list.creator.handle}/lists/${encodeURIComponent(formattedUri)}`,
+					// 	query: { uri: list.uri },
+					// }}
 					onClick={(e) => {
 						e.stopPropagation();
 					}}

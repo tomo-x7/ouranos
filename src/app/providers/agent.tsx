@@ -1,52 +1,49 @@
-"use client";
-
 import { createAgent } from "@/lib/api/bsky/agent";
+import { type session, useSession } from "@/lib/auth";
 import { isSessionExpired } from "@/lib/utils/session";
 import type AtpAgent from "@atproto/api";
-import type { Session } from "next-auth";
-import { useSession } from "next-auth/react";
 import { type ReactNode, createContext, useContext, useEffect } from "react";
 
 const AgentContext = createContext<AtpAgent | null>(null);
 
 interface AgentProviderProps {
 	children: ReactNode;
-	session: Session | null;
+	session: session | null;
 }
 
 export const AgentProvider = (props: AgentProviderProps) => {
 	const { children, session } = props;
 
 	if (!session) return;
-	const agent = createAgent(session.user.service);
-	agent.sessionManager.session = session.user.bskySession;
+	const agent = createAgent(session.serviceURL ?? "https://bsky.social");
+	agent.sessionManager.session = session.session;
 
 	return <AgentContext.Provider value={agent}>{children}</AgentContext.Provider>;
 };
 
 export const useAgent = () => {
-	const { data: session, status } = useSession();
+	const { session, status } = useSession();
 	const agent = useContext(AgentContext);
 
 	useEffect(() => {
 		if (!session || !agent) return;
 
 		const getSession = async () => {
-			if (isSessionExpired(session.user.bskySession)) {
-				const result = await agent.resumeSession(session.user.bskySession);
+			if (isSessionExpired(session)) {
+				const result = await agent.resumeSession(session);
 
 				if (!result.success) {
 					throw new Error("Could not resume session");
 				}
 			}
 
-			agent.sessionManager.session = session.user.bskySession;
+			agent.sessionManager.session = session;
 		};
 
 		getSession();
 	}, [agent, session]);
 
-	if (status !== "authenticated" || !agent || !session?.user) {
+	if (status !== "authenticated" || !agent /*|| !session?.user*/) {
 		throw new Error("AgentProvider must be used inside SessionProvider");
 	}
 

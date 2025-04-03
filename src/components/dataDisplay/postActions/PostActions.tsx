@@ -1,6 +1,7 @@
 import { useComposerControls } from "@/app/providers/composer";
 import Button from "@/components/actions/button/Button";
 import Dropdown from "@/components/actions/dropdown/Dropdown";
+import { useSession } from "@/lib/auth";
 import useDeletePost from "@/lib/hooks/bsky/feed/useDeletePost";
 import useLike from "@/lib/hooks/bsky/feed/useLike";
 import useMuteUser from "@/lib/hooks/bsky/feed/useMuteUser";
@@ -9,8 +10,6 @@ import { getPostId } from "@/lib/utils/link";
 import { abbreviateNumber } from "@/lib/utils/number";
 import { getTranslateLink } from "@/lib/utils/text";
 import { type AppBskyFeedDefs, AppBskyFeedPost } from "@atproto/api";
-import { useSession } from "next-auth/react";
-import Link from "next/link";
 import { useCallback } from "react";
 import toast from "react-hot-toast";
 import {
@@ -26,6 +25,7 @@ import {
 	BiSolidTrash,
 } from "react-icons/bi";
 import { MdIosShare, MdOutlineTranslate } from "react-icons/md";
+import { Link } from "react-router-dom";
 import { useClipboard } from "use-clipboard-copy";
 
 interface Props {
@@ -36,7 +36,7 @@ interface Props {
 export default function PostActions(props: Props) {
 	const { post, mode = "feed" } = props;
 	const text = AppBskyFeedPost.isRecord(post.record) && post.record.text;
-	const { data: session } = useSession();
+	const { session } = useSession();
 	const { deletePost } = useDeletePost({ post: post });
 	const { liked, toggleLike, likeCount } = useLike({ post: post });
 	const { reposted, toggleRepost, repostCount } = useRepost({ post: post });
@@ -72,7 +72,7 @@ export default function PostActions(props: Props) {
 					<div className="border-skin-base mt-3 flex flex-wrap items-center gap-3 border-y py-2">
 						{repostCount > 0 && (
 							<Link
-								href={`/dashboard/user/${post.author.handle}/post/${getPostId(post.uri)}/reposted-by`}
+								to={`/dashboard/user/${post.author.handle}/post/${getPostId(post.uri)}/reposted-by`}
 								className="text-skin-base flex gap-1 font-semibold"
 							>
 								{abbreviateNumber(repostCount)}
@@ -81,7 +81,7 @@ export default function PostActions(props: Props) {
 						)}
 						{quoteCount > 0 && (
 							<Link
-								href={`/dashboard/user/${post.author.handle}/post/${getPostId(post.uri)}/quotes`}
+								to={`/dashboard/user/${post.author.handle}/post/${getPostId(post.uri)}/quotes`}
 								className="text-skin-base flex gap-1 font-semibold"
 							>
 								{abbreviateNumber(quoteCount)}
@@ -90,7 +90,7 @@ export default function PostActions(props: Props) {
 						)}
 						{likeCount > 0 && (
 							<Link
-								href={`/dashboard/user/${post.author.handle}/post/${getPostId(post.uri)}/liked-by`}
+								to={`/dashboard/user/${post.author.handle}/post/${getPostId(post.uri)}/liked-by`}
 								className="text-skin-base flex gap-1 font-semibold"
 							>
 								{abbreviateNumber(likeCount)}
@@ -202,7 +202,7 @@ export default function PostActions(props: Props) {
 									icon={<BiSolidCopy />}
 								/>
 							)}
-							{session.user?.handle !== post.author.handle && (
+							{session.handle !== post.author.handle && (
 								<Dropdown.MenuItem
 									onSelect={() => {
 										toggleMuteUser.mutate();
@@ -211,7 +211,7 @@ export default function PostActions(props: Props) {
 									icon={muted ? <BiSolidBell /> : <BiSolidBellOff />}
 								/>
 							)}
-							{session.user?.handle === post.author.handle && (
+							{session.handle === post.author.handle && (
 								<Dropdown.MenuItem
 									onSelect={() => {
 										deletePost.mutate();
@@ -334,7 +334,7 @@ export default function PostActions(props: Props) {
 					{text && (
 						<Dropdown.MenuItem onSelect={handleCopyPostText} text="Copy Post Text" icon={<BiSolidCopy />} />
 					)}
-					{session.user?.handle !== post.author.handle && (
+					{session.handle !== post.author.handle && (
 						<Dropdown.MenuItem
 							onSelect={() => {
 								toggleMuteUser.mutate();
@@ -343,7 +343,7 @@ export default function PostActions(props: Props) {
 							icon={muted ? <BiSolidBell /> : <BiSolidBellOff />}
 						/>
 					)}
-					{session.user?.handle === post.author.handle && (
+					{session.handle === post.author.handle && (
 						<Dropdown.MenuItem
 							onSelect={() => {
 								deletePost.mutate();

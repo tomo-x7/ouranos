@@ -1,7 +1,7 @@
 import { getHandle, getShortAddress } from "@/lib/utils/text";
 import { RichText as RichTextHelper } from "@atproto/api";
-import Link from "next/link";
 import { Fragment } from "react";
+import { Link } from "react-router-dom";
 
 interface Props {
 	description: string;
@@ -26,7 +26,7 @@ export default function ProfileBio(props: Props) {
 				component: (
 					<Link
 						className="text-skin-link-base hover:text-skin-link-hover break-words"
-						href={`/dashboard/user/${getHandle(segment.text)}`}
+						to={`/dashboard/user/${getHandle(segment.text)}`}
 						key={segment.mention?.did}
 						onClick={(e) => e.stopPropagation()}
 					>
@@ -40,7 +40,7 @@ export default function ProfileBio(props: Props) {
 				component: (
 					<Link
 						className="text-skin-link-base hover:text-skin-link-hover inline-block break-all"
-						href={segment.link!.uri}
+						to={segment.link!.uri}
 						target="_blank"
 						key={segment.link!.uri}
 						onClick={(e) => e.stopPropagation()}
@@ -55,7 +55,7 @@ export default function ProfileBio(props: Props) {
 				text: segment.text,
 				component: (
 					<Link
-						href={`/dashboard/search?query=%23${encodedTag}`}
+						to={`/dashboard/search?query=%23${encodedTag}`}
 						key={segment.text}
 						className="text-skin-link-base hover:text-skin-link-hover break-all"
 						onClick={(e) => e.stopPropagation()}

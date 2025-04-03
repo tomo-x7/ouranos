@@ -4,8 +4,8 @@ import { getNotificationIcon } from "@/lib/utils/icon";
 import { getNotificationLabel } from "@/lib/utils/text";
 import { getRelativeTime } from "@/lib/utils/time";
 import type { AppBskyNotificationListNotifications } from "@atproto/api";
-import Link from "next/link";
 import { memo } from "react";
+import { Link } from "react-router-dom";
 import type { ContentFilterResult, GroupedNotification } from "../../../../types/feed";
 import ProfileHoverCard from "../profileHoverCard/ProfileHoverCard";
 import NotificationContnet from "./NotificationContent";
@@ -37,7 +37,7 @@ const NotificationItem = memo(function NotificationItem(props: Props) {
 									{allAuthors.slice(0, MAX_AUTHORS_SHOWN).map((author) => (
 										<Link
 											key={author.handle}
-											href={`/dashboard/user/${author.handle}`}
+											to={`/dashboard/user/${author.handle}`}
 											className="max-w-fit hover:brightness-90"
 										>
 											<ProfileHoverCard handle={author.handle}>
@@ -59,7 +59,7 @@ const NotificationItem = memo(function NotificationItem(props: Props) {
 									<>
 										<Link
 											key={author.handle}
-											href={`/dashboard/user/${author.handle}`}
+											to={`/dashboard/user/${author.handle}`}
 											className="text-skin-base hover:text-skin-secondary break-all font-semibold"
 										>
 											{author.displayName || author.handle}{" "}
@@ -73,7 +73,7 @@ const NotificationItem = memo(function NotificationItem(props: Props) {
 								)}
 								{allAuthors?.length === 1 && (
 									<Link
-										href={`/dashboard/user/${author.handle}`}
+										to={`/dashboard/user/${author.handle}`}
 										className="text-skin-base hover:text-skin-secondary break-all font-semibold"
 									>
 										{author.displayName || author.handle}{" "}

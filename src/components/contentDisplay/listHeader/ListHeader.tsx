@@ -1,9 +1,6 @@
-"use client";
-
 import FallbackList from "@/assets/images/fallbackList.png";
 import useListInfo from "@/lib/hooks/bsky/list/useListInfo";
-import Image from "next/image";
-import Link from "next/link";
+import { Link } from "react-router-dom";
 import ListHeaderSkeleton from "./ListHeaderSkeleton";
 
 interface Props {
@@ -20,7 +17,7 @@ export default function FeedHeader(props: Props) {
 		<article className="border-skin-base flex flex-col gap-2 border border-x-0 border-y-0 p-3 md:rounded-t-2xl md:border md:border-b-0">
 			<div className="flex flex-wrap items-center justify-between gap-3">
 				<div className="flex flex-wrap items-center gap-3">
-					<Image
+					<img
 						src={listInfo.list.avatar ?? FallbackList}
 						alt={listInfo.list.name}
 						width={60}
@@ -32,7 +29,7 @@ export default function FeedHeader(props: Props) {
 						<h3 className="text-skin-secondary break-all">
 							By{" "}
 							<Link
-								href={`/dashboard/user/${listInfo.list.creator.handle}`}
+								to={`/dashboard/user/${listInfo.list.creator.handle}`}
 								className="hover:text-skin-tertiary font-medium"
 							>
 								@{listInfo.list.creator.handle}

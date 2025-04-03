@@ -1,5 +1,3 @@
-"use client";
-
 import ComposeButton from "@/components/actions/composeButton/ComposeButton";
 import Refetch from "@/components/actions/refetch/Refetch";
 import FeedPostSkeleton from "@/components/contentDisplay/feedPost/FeedPostSkeleton";

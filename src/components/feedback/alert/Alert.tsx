@@ -1,7 +1,7 @@
 import { getAlertIcon } from "@/lib/utils/icon";
 
 interface Props {
-	variant: Alert;
+	variant: "success" | "error" | "info" | "warning";
 	message: string;
 }
 

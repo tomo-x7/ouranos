@@ -1,7 +1,6 @@
 import type { ComposerOptionsQuote } from "@/app/providers/composer";
 import FallbackAvatar from "@/assets/images/fallbackAvatar.png";
 import { getRelativeTime } from "@/lib/utils/time";
-import Image from "next/image";
 import { useState } from "react";
 
 interface Props {
@@ -24,7 +23,7 @@ export default function QuoteToPreview(props: Props) {
 			onClick={toggleShowMore}
 			className="bg-skin-base border-skin-base flex cursor-pointer items-start gap-1 rounded-2xl border p-2"
 		>
-			<Image
+			<img
 				src={author.avatar?.replace("avatar", "avatar_thumbnail") ?? FallbackAvatar}
 				alt="Avatar"
 				width={20}

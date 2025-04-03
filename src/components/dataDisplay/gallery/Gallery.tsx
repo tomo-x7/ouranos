@@ -1,6 +1,5 @@
 import Button from "@/components/actions/button/Button";
 import * as Dialog from "@radix-ui/react-dialog";
-import Image from "next/image";
 import { type KeyboardEvent, useCallback, useEffect, useState } from "react";
 import { BiLeftArrowAlt, BiRightArrowAlt, BiSolidCloudDownload } from "react-icons/bi";
 import { CgClose } from "react-icons/cg";
@@ -124,12 +123,12 @@ export default function Gallery(props: Props) {
 						</Button>
 					)}
 
-					<Image
+					<img
 						src={images[currentIndex].src}
 						alt={images[currentIndex].alt ?? ""}
 						width={images[currentIndex].aspectRatio?.width ?? 900}
 						height={images[currentIndex].aspectRatio?.height ?? 900}
-						priority
+						fetchPriority="high"
 						className="fixed inset-0 z-[60] mx-auto h-full w-fit object-contain"
 					/>
 				</Dialog.Content>

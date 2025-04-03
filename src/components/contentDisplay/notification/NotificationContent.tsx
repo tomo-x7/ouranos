@@ -8,8 +8,8 @@ import { getPostId } from "@/lib/utils/link";
 import type { AppBskyFeedDefs } from "@atproto/api";
 import type { ViewRecord } from "@atproto/api/dist/client/types/app/bsky/embed/record";
 import { useQuery } from "@tanstack/react-query";
-import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import type { ContentFilterResult } from "../../../../types/feed";
 import NotificationContentSkeleton from "./NotificationContentSkeleton";
 
@@ -21,7 +21,7 @@ interface Props {
 export default function NotificationContnet(props: Props) {
 	const { uri, filter } = props;
 	const agent = useAgent();
-	const router = useRouter();
+	const nav = useNavigate();
 
 	const { status, data, error, isLoading, isFetching } = useQuery({
 		queryKey: ["notificationContent", uri],
@@ -64,7 +64,7 @@ export default function NotificationContnet(props: Props) {
 			<div
 				onClick={(e) => {
 					e.stopPropagation();
-					router.push(`/dashboard/user/${post?.post.author.handle}/post/${getPostId(uri)}`);
+					nav(`/dashboard/user/${post?.post.author.handle}/post/${getPostId(uri)}`);
 				}}
 				className="text-skin-secondary cursor-pointer text-[0.93rem]"
 			>

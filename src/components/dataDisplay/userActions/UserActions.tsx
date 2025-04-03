@@ -4,12 +4,12 @@ import useBlockUser from "@/lib/hooks/bsky/actor/useBlockUser";
 import useMuteUser from "@/lib/hooks/bsky/feed/useMuteUser";
 import type { AppBskyFeedDefs } from "@atproto/api";
 import type { ViewerState } from "@atproto/api/dist/client/types/app/bsky/actor/defs";
-import { useRouter } from "next/navigation";
 import { useCallback } from "react";
 import toast from "react-hot-toast";
 import { BiDotsHorizontalRounded, BiLink, BiSolidBell, BiSolidBellOff } from "react-icons/bi";
 import { BsPersonFill, BsPersonFillSlash } from "react-icons/bs";
 import { PiMagnifyingGlassBold } from "react-icons/pi";
+import { useNavigate } from "react-router-dom";
 import { useClipboard } from "use-clipboard-copy";
 
 interface Props {
@@ -21,7 +21,7 @@ interface Props {
 
 export default function UserActions(props: Props) {
 	const { author, viewer, viewerHandle, viewerDID } = props;
-	const router = useRouter();
+	const nav = useNavigate();
 	const { muted, toggleMuteUser } = useMuteUser({ author: author });
 	const { toggleBlockUser } = useBlockUser({
 		author: author,
@@ -40,8 +40,8 @@ export default function UserActions(props: Props) {
 	}, [clipboard, author.handle]);
 
 	const handleSearch = useCallback(() => {
-		router.push(`/dashboard/search?query=from:${author.handle}+`);
-	}, [router, author.handle]);
+		nav(`/dashboard/search?query=from:${author.handle}+`);
+	}, [nav, author.handle]);
 
 	return (
 		<Dropdown>

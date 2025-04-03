@@ -1,5 +1,3 @@
-"use client";
-
 import { useAgent } from "@/app/providers/agent";
 import ProfileCard from "@/components/contentDisplay/profileCard/ProfileCard";
 import FeedAlert from "@/components/feedback/feedAlert/FeedAlert";

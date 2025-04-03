@@ -1,6 +1,6 @@
 import { MAX_KNOWN_FOLLOWERS } from "@/lib/consts/general";
 import useKnownFollowers from "@/lib/hooks/bsky/social/useKnownFollowers";
-import Link from "next/link";
+import { Link } from "react-router-dom";
 import Avatar from "../avatar/Avatar";
 import KnownFollowersSkeleton from "./KnownFollowersSkeleton";
 
@@ -34,7 +34,7 @@ export default function KnownFollowers(props: Props) {
 	if (knownFollowersError) return <span className="text-skin-secondary">Could not show known followers</span>;
 
 	return (
-		<Link className="flex items-center gap-2 hover:opacity-80" href={`/dashboard/user/${handle}/known-followers`}>
+		<Link className="flex items-center gap-2 hover:opacity-80" to={`/dashboard/user/${handle}/known-followers`}>
 			<div className="flex shrink-0 -space-x-4">
 				{profiles?.slice(0, MAX_KNOWN_FOLLOWERS).map((follower, i) => (
 					<div key={follower.did} style={{ zIndex: MAX_KNOWN_FOLLOWERS - i }}>

@@ -1,25 +1,15 @@
-"use client";
-
-import { ThemeProvider as Provider } from "next-themes";
-import { type ReactNode, useEffect, useState } from "react";
+import { getSavedTheme, setTheme as setThemeOuter, type theme, themeContext } from "@/lib/theme";
+import { type ReactNode, useCallback, useState } from "react";
 
 interface Props {
 	children: ReactNode;
 }
 
-export default function ThemeProvider(props: Props) {
-	const { children } = props;
-	const [isClient, setIsClient] = useState(false);
-
-	useEffect(() => {
-		setIsClient(true);
+export default function ThemeProvider({ children }: Props) {
+	const [theme, setThemeInner] = useState<theme>(getSavedTheme);
+	const setTheme = useCallback((theme: theme) => {
+		setThemeInner(theme);
+		setThemeOuter(theme);
 	}, []);
-
-	if (isClient) {
-		return (
-			<Provider attribute="data-theme" disableTransitionOnChange={true}>
-				{children}
-			</Provider>
-		);
-	}
+	return <themeContext.Provider value={[theme, setTheme]}>{children}</themeContext.Provider>;
 }

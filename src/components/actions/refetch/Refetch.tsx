@@ -1,5 +1,3 @@
-"use client";
-
 import { useScrollContext } from "@/app/providers/scroll";
 import { LuRefreshCcw } from "react-icons/lu";
 import { useDebouncedCallback } from "use-debounce";

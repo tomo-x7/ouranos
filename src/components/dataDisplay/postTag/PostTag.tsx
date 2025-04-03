@@ -1,7 +1,7 @@
 import Button from "@/components/actions/button/Button";
-import Link from "next/link";
 import { BiHash } from "react-icons/bi";
 import { CgClose } from "react-icons/cg";
+import { Link } from "react-router-dom";
 
 interface Props {
 	tag: string;
@@ -30,7 +30,7 @@ export default function PostTag(props: Props) {
 
 	return (
 		<Link
-			href={`/dashboard/search?query=%23${encodedTag}`}
+			to={`/dashboard/search?query=%23${encodedTag}`}
 			className="flex flex-wrap items-center bg-skin-base border border-skin-base px-3 py-1.5 rounded-lg text-sm text-skin-secondary font-medium hover:text-skin-base break-all"
 			onClick={(e) => e.stopPropagation()}
 		>

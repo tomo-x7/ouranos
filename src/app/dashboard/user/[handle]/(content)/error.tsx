@@ -1,5 +1,3 @@
-"use client";
-
 import FeedAlert from "@/components/feedback/feedAlert/FeedAlert";
 
 // biome-ignore lint/suspicious/noShadowRestrictedNames: <explanation>

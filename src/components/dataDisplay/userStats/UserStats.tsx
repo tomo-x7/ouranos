@@ -1,5 +1,5 @@
 import { abbreviateNumber } from "@/lib/utils/number";
-import Link from "next/link";
+import { Link } from "react-router-dom";
 
 interface Props {
 	handle: string;
@@ -14,7 +14,7 @@ export default function UserStats(props: Props) {
 	return (
 		<div className="flex flex-wrap items-center gap-x-3 gap-y-1">
 			<Link
-				href={`/dashboard/user/${handle}/following`}
+				to={`/dashboard/user/${handle}/following`}
 				className="text-skin-base flex gap-1 font-semibold hover:brightness-110"
 			>
 				{abbreviateNumber(followCount)}
@@ -22,7 +22,7 @@ export default function UserStats(props: Props) {
 			</Link>
 
 			<Link
-				href={`/dashboard/user/${handle}/followers`}
+				to={`/dashboard/user/${handle}/followers`}
 				className="text-skin-base flex gap-1 font-semibold hover:brightness-110"
 			>
 				{abbreviateNumber(followerCount)}

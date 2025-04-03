@@ -1,5 +1,3 @@
-"use client";
-
 import { useComposerControls, useComposerState } from "@/app/providers/composer";
 import Editor from "@/components/inputs/editor/Editor";
 import type { ProfileViewDetailed } from "@atproto/api/dist/client/types/app/bsky/actor/defs";

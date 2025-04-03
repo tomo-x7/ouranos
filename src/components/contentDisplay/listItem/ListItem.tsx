@@ -1,10 +1,7 @@
-"use client";
-
 import FallbackList from "@/assets/images/fallbackList.png";
 import type { ListView } from "@atproto/api/dist/client/types/app/bsky/graph/defs";
-import Image from "next/image";
-import Link from "next/link";
 import { memo } from "react";
+import { Link } from "react-router-dom";
 
 interface Props {
 	list: ListView;
@@ -17,19 +14,22 @@ const ListItem = memo(function ListItem(props: Props) {
 
 	return (
 		<Link
-			href={{
-				pathname: `/dashboard/user/${creator.handle}/lists/${encodeURIComponent(
-					uri.split(":")[3].split("/")[2],
-				)}`,
-				query: { uri: uri },
-			}}
+			to={`/dashboard/user/${creator.handle}/lists/${encodeURIComponent(
+				uri.split(":")[3].split("/")[2],
+			)}?uri=${uri}`}
+			// to={{
+			// 	pathname: `/dashboard/user/${creator.handle}/lists/${encodeURIComponent(
+			// 		uri.split(":")[3].split("/")[2],
+			// 	)}`,
+			// 	query: { uri: uri },
+			// }}
 			className={`border-skin-base hover:bg-skin-secondary flex flex-col gap-2 border border-x-0 p-3 last:border-b md:border-x ${
 				rounded ? "first:border-t md:first:rounded-t-2xl" : "first:border-t-0"
 			} md:last:rounded-b-2xl odd:[&:not(:last-child)]:border-b-0 even:[&:not(:last-child)]:border-b-0`}
 		>
 			<div className="flex flex-wrap items-center justify-between gap-3">
 				<div className="flex flex-wrap items-center gap-3">
-					<Image
+					<img
 						src={avatar ?? FallbackList}
 						alt={name}
 						width={40}

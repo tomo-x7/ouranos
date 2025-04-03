@@ -1,9 +1,6 @@
-import { isServer } from "@/lib/utils/general";
+import { getSession } from "@/lib/auth";
 import { isSessionExpired } from "@/lib/utils/session";
 import { AtpAgent } from "@atproto/api";
-import { getSession } from "next-auth/react";
-import { redirect } from "next/navigation";
-import { getSessionFromServer } from "../auth/session";
 
 export const createAgent = (service: string) => {
 	return new AtpAgent({
@@ -13,16 +10,16 @@ export const createAgent = (service: string) => {
 
 export const getBskySession = async () => {
 	try {
-		const session = isServer() ? await getSessionFromServer() : await getSession();
+		const session = getSession();
 
-		if (!session?.user.bskySession) {
+		if (!session.session) {
 			throw new Error("No session found");
 		}
 
-		const agent = createAgent(session.user.service);
+		const agent = createAgent(session.serviceURL);
 
-		if (isSessionExpired(session.user.bskySession)) {
-			const result = await agent.resumeSession(session.user.bskySession);
+		if (isSessionExpired(session.session)) {
+			const result = await agent.resumeSession(session.session);
 
 			if (!result.success) {
 				throw new Error("Could not resume session");
@@ -30,7 +27,7 @@ export const getBskySession = async () => {
 		}
 
 		// session is not expired, use the current one
-		agent.sessionManager.session = session.user.bskySession;
+		agent.sessionManager.session = session.session;
 
 		return agent;
 	} catch (e) {
@@ -38,12 +35,12 @@ export const getBskySession = async () => {
 	}
 };
 
-export const getAgentFromServer = async () => {
-	try {
-		const agent = await getBskySession();
-		return agent;
-	} catch (error) {
-		console.error(error);
-		redirect("/");
-	}
-};
+// export const getAgentFromServer = async () => {
+// 	try {
+// 		const agent = await getBskySession();
+// 		return agent;
+// 	} catch (error) {
+// 		console.error(error);
+// 		redirect("/");
+// 	}
+// };

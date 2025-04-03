@@ -1,12 +1,10 @@
-"use client";
-
 import { getHandle } from "@/lib/utils/text";
 import { AppBskyFeedPost, RichText as RichTextHelper } from "@atproto/api";
 import type { PostView } from "@atproto/api/dist/client/types/app/bsky/feed/defs";
 import * as Tooltip from "@radix-ui/react-tooltip";
-import Link from "next/link";
 import { Fragment } from "react";
 import { BiLinkExternal } from "react-icons/bi";
+import { Link } from "react-router-dom";
 import PostTag from "../postTag/PostTag";
 
 interface Props {
@@ -37,7 +35,7 @@ export default function PostText(props: Props) {
 						{segment.mention?.did && (
 							<Link
 								className="text-skin-link-base hover:text-skin-link-hover break-after-auto"
-								href={`/dashboard/user/${getHandle(segment.text)}`}
+								to={`/dashboard/user/${getHandle(segment.text)}`}
 								key={segment.mention?.did}
 								onClick={(e) => e.stopPropagation()}
 							>
@@ -56,7 +54,7 @@ export default function PostText(props: Props) {
 							<Tooltip.Trigger asChild>
 								<Link
 									className="text-skin-link-base hover:text-skin-link-hover break-all"
-									href={segment.link?.uri!}
+									to={segment.link?.uri!}
 									target="_blank"
 									key={segment.link?.uri}
 									onClick={(e) => e.stopPropagation()}
@@ -73,7 +71,7 @@ export default function PostText(props: Props) {
 
 									<Link
 										className="text-skin-link-base hover:text-skin-link-hover break-all"
-										href={segment.link?.uri!}
+										to={segment.link?.uri!}
 										target="_blank"
 										key={segment.link?.uri}
 										onClick={(e) => e.stopPropagation()}
@@ -92,7 +90,7 @@ export default function PostText(props: Props) {
 				text: segment.text,
 				component: (
 					<Link
-						href={`/dashboard/search?query=%23${encodedTag}`}
+						to={`/dashboard/search?query=%23${encodedTag}`}
 						key={segment.text}
 						className="text-skin-link-base hover:text-skin-link-hover break-all"
 						onClick={(e) => e.stopPropagation()}

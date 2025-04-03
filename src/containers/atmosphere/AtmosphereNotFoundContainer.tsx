@@ -3,7 +3,7 @@ import FrontpageLogo from "@/assets/images/frontpageLogo.jpg";
 import WhiteWindLogo from "@/assets/images/whtwndLogo.jpg";
 import Avatar from "@/components/dataDisplay/avatar/Avatar";
 import Alert from "@/components/feedback/alert/Alert";
-import Link from "next/link";
+import { Link } from "react-router-dom";
 
 interface Props {
 	url: string;
@@ -16,7 +16,7 @@ function AtmosphereItem(props: Props) {
 	const { url, title, description, logo } = props;
 
 	return (
-		<Link href={url}>
+		<Link to={url}>
 			<article className="flex items-start gap-3 p-3 border border-skin-base rounded-xl bg-skin-base hover:bg-skin-secondary">
 				<Avatar src={logo} size="md" />
 				<div className="flex flex-col">
@@ -41,7 +41,7 @@ export default function AtmosphereNotFoundContainer() {
 						url="/dashboard/user/frontpage.fyi"
 						title="Frontpage"
 						description="A decentralised and federated link aggregator built on the same technologies as Bluesky."
-						logo={FrontpageLogo.src}
+						logo={FrontpageLogo}
 					/>
 				</li>
 				<li>
@@ -49,7 +49,7 @@ export default function AtmosphereNotFoundContainer() {
 						url="/dashboard/user/linkat.blue"
 						title="Linkat"
 						description="Create your Link in Bio for Bluesky."
-						logo={LinkatLogo.src}
+						logo={LinkatLogo}
 					/>
 				</li>
 				<li>
@@ -57,7 +57,7 @@ export default function AtmosphereNotFoundContainer() {
 						url="/dashboard/user/whtwnd.com"
 						title="White Wind"
 						description="A Markdown blog service (AppView) which uses atproto."
-						logo={WhiteWindLogo.src}
+						logo={WhiteWindLogo}
 					/>
 				</li>
 			</ul>

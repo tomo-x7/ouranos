@@ -3,8 +3,9 @@ import AppBar from "@/components/navigational/appBar/AppBar";
 import Aside from "@/components/navigational/aside/Aside";
 import SidePanel from "@/components/navigational/sidePanel/SidePanel";
 import TopBar from "@/components/navigational/topBar/TopBar";
-import { getSessionFromServer } from "@/lib/api/auth/session";
 import { getProfile } from "@/lib/api/bsky/actor";
+import { createAgent } from "@/lib/api/bsky/agent";
+import { getSession } from "@/lib/auth";
 import type { Metadata } from "next";
 import { AgentProvider } from "../providers/agent";
 
@@ -18,8 +19,10 @@ export default async function DashboardLayout({
 }: {
 	children: React.ReactNode;
 }) {
-	const session = await getSessionFromServer();
-	const profile = await getProfile(session?.user.bskySession.handle);
+	const session = getSession();
+	const agent = createAgent(session.serviceURL ?? "https://bsky.social");
+	agent.sessionManager.session = session.session;
+	const profile = await getProfile(session.session?.handle, agent);
 
 	return (
 		<AgentProvider session={session}>

@@ -1,6 +1,5 @@
 import FallbackAvatar from "@/assets/images/fallbackAvatar.png";
 import { getAvatarSize } from "@/lib/utils/image";
-import Image from "next/image";
 
 interface Props {
 	size?: AvatarSize;
@@ -12,12 +11,12 @@ export default function Avatar(props: Props) {
 	const [width, height] = getAvatarSize(size);
 
 	return (
-		<Image
+		<img
 			src={src ?? FallbackAvatar}
 			alt="Avatar"
 			width={width}
 			height={height}
-			priority
+			fetchPriority="high"
 			className={`rounded-full ${className}`}
 		/>
 	);

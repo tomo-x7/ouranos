@@ -1,9 +1,7 @@
-"use client";
-
 import { THEMES } from "@/lib/store/local";
-import { useTheme } from "next-themes";
 
 import { ToggleGroup, ToggleGroupItem } from "@/components/inputs/toggleGroup/ToggleGroup";
+import { type theme, useTheme } from "@/lib/theme";
 import type { ReactNode } from "react";
 
 interface ItemProps {
@@ -25,9 +23,7 @@ function Item(props: ItemProps) {
 }
 
 export default function AppearanceContainer() {
-	const { theme, setTheme } = useTheme();
-	const defaultTheme = THEMES[0].value;
-	const isDefaultTheme = theme === "system";
+	const [theme, setTheme] = useTheme();
 
 	return (
 		<section className="flex flex-col gap-5">
@@ -38,9 +34,9 @@ export default function AppearanceContainer() {
 					<Item item={"Theme"}>
 						<ToggleGroup
 							type="single"
-							defaultValue={isDefaultTheme ? defaultTheme : theme}
-							value={isDefaultTheme ? defaultTheme : theme}
-							onValueChange={(value: string) => {
+							defaultValue={theme}
+							value={theme}
+							onValueChange={(value: theme) => {
 								if (!value) return;
 								setTheme(value);
 							}}

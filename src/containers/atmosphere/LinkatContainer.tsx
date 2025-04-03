@@ -1,7 +1,7 @@
 import Alert from "@/components/feedback/alert/Alert";
 import type { Record } from "@atproto/api/dist/client/types/com/atproto/repo/listRecords";
-import Link from "next/link";
 import { BiLink } from "react-icons/bi";
+import { Link } from "react-router-dom";
 import { BlueLinkatBoard } from "../../../types/atmosphere/index";
 
 interface Props {
@@ -25,7 +25,7 @@ export default function LinkatContainer(props: Props) {
 							<article key={i} className="bg-skin-tertiary text-skin-base rounded-lg">
 								{card.url ? (
 									<Link
-										href={card.url}
+										to={card.url}
 										target="_blank"
 										className="flex flex-wrap items-center gap-1 p-3 hover:bg-skin-muted rounded-lg"
 									>

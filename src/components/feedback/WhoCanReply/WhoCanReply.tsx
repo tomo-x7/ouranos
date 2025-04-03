@@ -1,6 +1,6 @@
 import { type AppBskyFeedDefs, AppBskyFeedThreadgate } from "@atproto/api";
-import Link from "next/link";
 import { BiMessageRoundedEdit } from "react-icons/bi";
+import { Link } from "react-router-dom";
 
 interface Props {
 	post: AppBskyFeedDefs.PostView;
@@ -47,7 +47,7 @@ export default function WhoCanReply(props: Props) {
 					<>
 						Users followed and mentioned by{" "}
 						<Link
-							href={`/dashboard/user/${post.author.handle}`}
+							to={`/dashboard/user/${post.author.handle}`}
 							className="text-skin-link-base hover:text-skin-link-hover font-medium"
 						>
 							{post.author.handle}
@@ -58,7 +58,7 @@ export default function WhoCanReply(props: Props) {
 					<>
 						Users followed by{" "}
 						<Link
-							href={`/dashboard/user/${post.author.handle}`}
+							to={`/dashboard/user/${post.author.handle}`}
 							className="text-skin-link-base hover:text-skin-link-hover font-medium"
 						>
 							{post.author.handle}
@@ -73,12 +73,15 @@ export default function WhoCanReply(props: Props) {
 						{lists.map((list, i) => (
 							<Link
 								key={list.uri}
-								href={{
-									pathname: `/dashboard/user/${post.author.handle}/lists/${encodeURIComponent(
-										list.uri.split(":")[3].split("/")[2],
-									)}`,
-									query: { uri: list.uri },
-								}}
+								to={`/dashboard/user/${post.author.handle}/lists/${encodeURIComponent(
+									list.uri.split(":")[3].split("/")[2],
+								)}?uri=${list.uri}`}
+								// href={{
+								// 	pathname: `/dashboard/user/${post.author.handle}/lists/${encodeURIComponent(
+								// 		list.uri.split(":")[3].split("/")[2],
+								// 	)}`,
+								// 	query: { uri: list.uri },
+								// }}
 								className="text-skin-link-base hover:text-skin-link-hover font-medium"
 							>
 								{list.name}

@@ -1,8 +1,8 @@
+import { useAgent } from "@/app/providers/agent";
 import SignOut from "@/components/actions/signOut/SignOut";
 import Avatar from "@/components/dataDisplay/avatar/Avatar";
-import { getSessionFromServer } from "@/lib/api/auth/session";
 import { getProfile } from "@/lib/api/bsky/actor";
-import Link from "next/link";
+import { getSession } from "@/lib/auth";
 import {
 	BiLogoGithub,
 	BiSolidCheckCircle,
@@ -17,11 +17,13 @@ import { FaSlidersH } from "react-icons/fa";
 import { ImBubbles2 } from "react-icons/im";
 import { MdRemoveRedEye } from "react-icons/md";
 import { TbLicense } from "react-icons/tb";
+import { Link } from "react-router-dom";
 
 export default async function SettingsContainer() {
-	const session = await getSessionFromServer();
-	const profile = await getProfile(session?.user.handle);
-	const isEmailConfirmed = session?.user.emailConfirmed ?? false;
+	const session = getSession();
+	const agent = useAgent();
+	const profile = await getProfile(session.session?.handle, agent);
+	const isEmailConfirmed = session.session?.emailConfirmed ?? false;
 
 	return (
 		<section className="flex flex-col gap-5">
@@ -31,7 +33,7 @@ export default async function SettingsContainer() {
 					<h3 className="text-skin-base mx-3 mb-2 text-xl font-semibold md:mx-0">Account</h3>
 					<div className="border-skin-base mt-2 flex w-full flex-col gap-3 rounded-none border border-x-0 p-3 md:rounded-b-2xl md:rounded-t-2xl md:border-x">
 						<div className="flex flex-wrap items-center justify-between gap-3 ">
-							<Link href={`/dashboard/user/${profile.handle}`} className="flex gap-3">
+							<Link to={`/dashboard/user/${profile.handle}`} className="flex gap-3">
 								<Avatar src={profile.avatar?.replace("avatar", "avatar_thumbnail")} size="md" />
 								<div className="flex flex-col">
 									<span className="text-skin-base line-clamp-1  shrink-0 break-all font-semibold">
@@ -47,7 +49,7 @@ export default async function SettingsContainer() {
 						<hr className="border-skin-base" />
 						<div className="flex flex-wrap items-center gap-2">
 							<BiSolidEnvelope className="text-skin-icon-base text-xl" />
-							<span className="text-skin-base break-all">{session?.user.email} </span>
+							<span className="text-skin-base break-all">{session.session?.email} </span>
 							{isEmailConfirmed && (
 								<small className="text-status-success bg-status-success/20 inline-flex items-center gap-1 rounded-full px-2 py-1.5 text-[0.6rem] font-bold">
 									<BiSolidCheckCircle className="text-status-success text-lg" />
@@ -69,7 +71,7 @@ export default async function SettingsContainer() {
 				<h3 className="text-skin-base mx-3 mb-2 text-xl font-semibold md:mx-0">General</h3>
 				<div className="flex flex-col">
 					<Link
-						href="/dashboard/settings/appearance"
+						to="/dashboard/settings/appearance"
 						className="border-skin-base text-skin-base hover:bg-skin-secondary flex items-center gap-2 border border-x-0 p-3 last:border-b md:border-x md:first:rounded-t-2xl md:last:rounded-b-2xl odd:[&:not(:last-child)]:border-b-0 even:[&:not(:last-child)]:border-b-0"
 					>
 						<BiSolidPalette className="text-skin-icon-base text-xl" />
@@ -82,21 +84,21 @@ export default async function SettingsContainer() {
 				<h3 className="text-skin-base mx-3 mb-2 text-xl font-semibold md:mx-0">Feeds and Threads</h3>
 				<div className="flex flex-col">
 					<Link
-						href="/dashboard/settings/home-feed"
+						to="/dashboard/settings/home-feed"
 						className="border-skin-base text-skin-base hover:bg-skin-secondary flex items-center gap-2 border border-x-0 p-3 last:border-b md:border-x md:first:rounded-t-2xl md:last:rounded-b-2xl odd:[&:not(:last-child)]:border-b-0 even:[&:not(:last-child)]:border-b-0"
 					>
 						<FaSlidersH className="text-skin-icon-base text-xl" />
 						Home Feed Preferences
 					</Link>
 					<Link
-						href="/dashboard/settings/thread-preferences"
+						to="/dashboard/settings/thread-preferences"
 						className="border-skin-base text-skin-base hover:bg-skin-secondary flex items-center gap-2 border border-x-0 p-3 last:border-b md:border-x md:first:rounded-t-2xl md:last:rounded-b-2xl odd:[&:not(:last-child)]:border-b-0 even:[&:not(:last-child)]:border-b-0"
 					>
 						<ImBubbles2 className="text-skin-icon-base text-xl" />
 						Thread Preferences
 					</Link>
 					<Link
-						href="/dashboard/settings/my-feeds"
+						to="/dashboard/settings/my-feeds"
 						className="border-skin-base text-skin-base hover:bg-skin-secondary flex items-center gap-2 border border-x-0 p-3 last:border-b md:border-x md:first:rounded-t-2xl md:last:rounded-b-2xl odd:[&:not(:last-child)]:border-b-0 even:[&:not(:last-child)]:border-b-0"
 					>
 						<BiSolidPlanet className="text-skin-icon-base text-xl" />
@@ -109,21 +111,21 @@ export default async function SettingsContainer() {
 				<h3 className="text-skin-base mx-3 mb-2 text-xl font-semibold md:mx-0">Moderation</h3>
 				<section className="flex flex-col">
 					<Link
-						href="/dashboard/settings/content-filtering"
+						to="/dashboard/settings/content-filtering"
 						className="border-skin-base text-skin-base hover:bg-skin-secondary flex items-center gap-2 border border-x-0 p-3 last:border-b md:border-x md:first:rounded-t-2xl md:last:rounded-b-2xl odd:[&:not(:last-child)]:border-b-0 even:[&:not(:last-child)]:border-b-0"
 					>
 						<MdRemoveRedEye className="text-skin-icon-base text-xl" />
 						Content Filtering
 					</Link>
 					<Link
-						href="/dashboard/settings/muted-users"
+						to="/dashboard/settings/muted-users"
 						className="border-skin-base text-skin-base hover:bg-skin-secondary flex items-center gap-2 border border-x-0 p-3 last:border-b md:border-x md:first:rounded-t-2xl md:last:rounded-b-2xl odd:[&:not(:last-child)]:border-b-0 even:[&:not(:last-child)]:border-b-0"
 					>
 						<BiSolidBellOff className="text-skin-icon-base text-xl" />
 						Muted Users
 					</Link>
 					<Link
-						href="/dashboard/settings/blocked-users"
+						to="/dashboard/settings/blocked-users"
 						className="border-skin-base text-skin-base hover:bg-skin-secondary flex items-center gap-2 border border-x-0 p-3 last:border-b md:border-x md:first:rounded-t-2xl md:last:rounded-b-2xl odd:[&:not(:last-child)]:border-b-0 even:[&:not(:last-child)]:border-b-0"
 					>
 						<BsPersonFillSlash className="text-skin-icon-base text-xl" />
@@ -135,7 +137,7 @@ export default async function SettingsContainer() {
 				<h3 className="text-skin-base mx-3 mb-2 text-xl font-semibold md:mx-0">Learn More</h3>
 				<div className="flex flex-col">
 					<Link
-						href="https://github.com/pdelfan/ouranos"
+						to="https://github.com/pdelfan/ouranos"
 						target="_blank"
 						className="border-skin-base text-skin-base hover:bg-skin-secondary flex items-center gap-2 border border-x-0 p-3 last:border-b md:border-x md:first:rounded-t-2xl md:last:rounded-b-2xl odd:[&:not(:last-child)]:border-b-0 even:[&:not(:last-child)]:border-b-0"
 					>
@@ -143,7 +145,7 @@ export default async function SettingsContainer() {
 						GitHub Repository
 					</Link>
 					<Link
-						href="https://github.com/pdelfan/ouranos/blob/main/LICENSE"
+						to="https://github.com/pdelfan/ouranos/blob/main/LICENSE"
 						target="_blank"
 						className="border-skin-base text-skin-base hover:bg-skin-secondary flex items-center gap-2 border border-x-0 p-3 last:border-b md:border-x md:first:rounded-t-2xl md:last:rounded-b-2xl odd:[&:not(:last-child)]:border-b-0 even:[&:not(:last-child)]:border-b-0"
 					>
@@ -151,7 +153,7 @@ export default async function SettingsContainer() {
 						License
 					</Link>
 					<Link
-						href="/about"
+						to="/about"
 						target="_blank"
 						className="border-skin-base text-skin-base hover:bg-skin-secondary flex items-center gap-2 border border-x-0 p-3 last:border-b md:border-x md:first:rounded-t-2xl md:last:rounded-b-2xl odd:[&:not(:last-child)]:border-b-0 even:[&:not(:last-child)]:border-b-0"
 					>

@@ -1,8 +1,5 @@
-"use client";
-
 import AltTag from "@/components/feedback/altTag/AltTag";
 import type { AppBskyEmbedImages } from "@atproto/api";
-import Image from "next/image";
 import { useState } from "react";
 import Gallery from "../gallery/Gallery";
 
@@ -24,12 +21,12 @@ export default function ImageEmbed(props: Props) {
 					<div className="flex flex-nowrap aspect-video gap-1 z-50">
 						{images.map((image, i) => (
 							<div key={i} className="relative">
-								<Image
+								<img
 									src={image.thumb}
 									alt={image.alt}
 									width={500}
 									height={250}
-									priority
+									fetchPriority="high"
 									className="rounded-md h-full max-h-62 object-cover cursor-pointer hover:brightness-90 border border-skin-base"
 									onClick={(e) => {
 										e.stopPropagation();
@@ -47,13 +44,13 @@ export default function ImageEmbed(props: Props) {
 						<div className="flex aspect-video gap-1">
 							<div className="flex grow basis-0 flex-col gap-1">
 								<div className="relative min-h-0 grow basis-0">
-									<Image
+									<img
 										key={0}
 										src={images[0].thumb}
 										alt={images[0].alt}
 										width={images[0].aspectRatio?.width ?? 450}
 										height={images[0].aspectRatio?.height ?? 450}
-										priority
+										fetchPriority="high"
 										className="rounded-md object-cover h-full cursor-pointer hover:brightness-90 border border-skin-base"
 										onClick={(e) => {
 											e.stopPropagation();
@@ -65,13 +62,13 @@ export default function ImageEmbed(props: Props) {
 							</div>
 							<div className="flex grow basis-0 flex-col gap-1">
 								<div className="relative min-h-0 grow basis-0">
-									<Image
+									<img
 										key={1}
 										src={images[1].thumb}
 										alt={images[1].alt}
 										width={images[1].aspectRatio?.width ?? 450}
 										height={images[1].aspectRatio?.height ?? 450}
-										priority
+										fetchPriority="high"
 										className="rounded-md object-cover w-full h-full cursor-pointer hover:brightness-90 border border-skin-base"
 										onClick={(e) => {
 											e.stopPropagation();
@@ -81,13 +78,13 @@ export default function ImageEmbed(props: Props) {
 									{images[1].alt && <AltTag text={images[1].alt} />}
 								</div>
 								<div className="relative min-h-0 grow basis-0">
-									<Image
+									<img
 										key={2}
 										src={images[2].thumb}
 										alt={images[2].alt}
 										width={images[2].aspectRatio?.width ?? 450}
 										height={images[2].aspectRatio?.height ?? 450}
-										priority
+										fetchPriority="high"
 										className="rounded-md object-cover w-full h-full cursor-pointer hover:brightness-90 border border-skin-base"
 										onClick={(e) => {
 											e.stopPropagation();
@@ -105,12 +102,12 @@ export default function ImageEmbed(props: Props) {
 					<div className="grid grid-cols-2 gap-1 ">
 						{images.map((image, i) => (
 							<div key={i} className="relative">
-								<Image
+								<img
 									src={image.thumb}
 									alt={image.alt}
 									width={images[i].aspectRatio?.width ?? 450}
 									height={images[i].aspectRatio?.height ?? 450}
-									priority
+									fetchPriority="high"
 									className="object-cover aspect-square rounded-md h-full max-h-64 cursor-pointer hover:brightness-90 border border-skin-base"
 									onClick={(e) => {
 										e.stopPropagation();
@@ -128,12 +125,12 @@ export default function ImageEmbed(props: Props) {
 					<div className="relative">
 						{images[0] && (
 							<>
-								<Image
+								<img
 									src={images[0].thumb}
 									alt={images[0].alt}
 									width={images[0].aspectRatio?.width ?? 900}
 									height={images[0].aspectRatio?.height ?? 900}
-									priority
+									fetchPriority="high"
 									className="rounded-md max-h-96 w-full object-cover cursor-pointer hover:brightness-90 border border-skin-base"
 									onClick={(e) => {
 										e.stopPropagation();

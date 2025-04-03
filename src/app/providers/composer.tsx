@@ -1,5 +1,3 @@
-"use client";
-
 import type { AppBskyEmbedRecord } from "@atproto/api";
 import React, { createContext, useState, type ReactNode } from "react";
 
