@@ -1,9 +1,9 @@
 import { RouterProvider } from "react-router-dom";
-import { ComposerProvider } from "./app/providers/composer";
-import QueryProvider from "./app/providers/query";
-import { ScrollProvider } from "./app/providers/scroll";
-import { SessionProvider } from "./app/providers/session";
-import ToastProvider from "./app/providers/toast";
+import { ComposerProvider } from "./lib/providers/composer";
+import QueryProvider from "./lib/providers/query";
+import { ScrollProvider } from "./lib/providers/scroll";
+import { SessionProvider } from "./lib/providers/session";
+import ToastProvider from "./lib/providers/toast";
 import { getSession } from "./lib/auth";
 import { router } from "./router";
 

@@ -1,4 +1,4 @@
-import { useAgent } from "@/app/providers/agent";
+import { useAgent } from "@/lib/providers/agent";
 import { getUnreadNotificationsCount } from "@/lib/api/bsky/notification";
 import { useQuery } from "@tanstack/react-query";
 import { BiHome, BiPlanet, BiSolidHome, BiSolidPlanet } from "react-icons/bi";

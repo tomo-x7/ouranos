@@ -1,4 +1,4 @@
-import { useAgent } from "@/app/providers/agent";
+import { useAgent } from "@/lib/providers/agent";
 import FeedAlert from "@/components/feedback/feedAlert/FeedAlert";
 import { getPopularFeeds, getSavedFeeds } from "@/lib/api/bsky/feed";
 import FeedItem from "../feedItem/FeedItem";

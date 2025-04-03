@@ -1,9 +1,9 @@
-import { useAgent } from "@/app/providers/agent";
+import { useAgent } from "@/lib/providers/agent";
 import ComposeButton from "@/components/actions/composeButton/ComposeButton";
 import FeedPostSkeleton from "@/components/contentDisplay/feedPost/FeedPostSkeleton";
 import EndOfFeed from "@/components/feedback/endOfFeed/EndOfFeed";
 import FeedAlert from "@/components/feedback/feedAlert/FeedAlert";
-import LoadingSpinner from "@/components/status/loadingSpinner/LoadingSpinner";
+import LoadingSpinner from "@/components/status/LoadingSpinner";
 import { getProfile } from "@/lib/api/bsky/actor";
 import usePreferences from "@/lib/hooks/bsky/actor/usePreferences";
 import useProfilePosts from "@/lib/hooks/bsky/feed/useProfilePosts";

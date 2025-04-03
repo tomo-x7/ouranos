@@ -1,6 +1,6 @@
 import NavItem from "./NavItem";
 
-import { useAgent } from "@/app/providers/agent";
+import { useAgent } from "@/lib/providers/agent";
 import { getUnreadNotificationsCount } from "@/lib/api/bsky/notification";
 import { useQuery } from "@tanstack/react-query";
 import { BiCog, BiHome, BiPlanet, BiSolidCog, BiSolidHome, BiSolidPlanet } from "react-icons/bi";

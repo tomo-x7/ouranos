@@ -7,7 +7,7 @@ import { getProfile } from "@/lib/api/bsky/actor";
 import { createAgent } from "@/lib/api/bsky/agent";
 import { getSession } from "@/lib/auth";
 import type { Metadata } from "next";
-import { AgentProvider } from "../providers/agent";
+import { AgentProvider } from "../../lib/providers/agent";
 
 export const metadata: Metadata = {
 	title: { template: "%s — Ouranos", default: "Ouranos" },

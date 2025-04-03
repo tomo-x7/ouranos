@@ -1,4 +1,4 @@
-import { useAgent } from "@/app/providers/agent";
+import { useAgent } from "@/lib/providers/agent";
 import FallbackFeed from "@/assets/images/fallbackFeed.png";
 import Button from "@/components/actions/button/Button";
 import Alert from "@/components/feedback/alert/Alert";

@@ -1,6 +1,6 @@
-import { useAgent } from "@/app/providers/agent";
+import { useAgent } from "@/lib/providers/agent";
 import FeedAlert from "@/components/feedback/feedAlert/FeedAlert";
-import LoadingSpinner from "@/components/status/loadingSpinner/LoadingSpinner";
+import LoadingSpinner from "@/components/status/LoadingSpinner";
 import { getLists } from "@/lib/api/bsky/list";
 import { useSession } from "@/lib/auth";
 import { useInfiniteQuery } from "@tanstack/react-query";

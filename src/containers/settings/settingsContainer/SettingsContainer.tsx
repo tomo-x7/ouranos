@@ -1,4 +1,4 @@
-import { useAgent } from "@/app/providers/agent";
+import { useAgent } from "@/lib/providers/agent";
 import SignOut from "@/components/actions/signOut/SignOut";
 import Avatar from "@/components/dataDisplay/avatar/Avatar";
 import { getProfile } from "@/lib/api/bsky/actor";

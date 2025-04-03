@@ -3,7 +3,7 @@ import Refetch from "@/components/actions/refetch/Refetch";
 import FeedPostSkeleton from "@/components/contentDisplay/feedPost/FeedPostSkeleton";
 import EndOfFeed from "@/components/feedback/endOfFeed/EndOfFeed";
 import FeedAlert from "@/components/feedback/feedAlert/FeedAlert";
-import LoadingSpinner from "@/components/status/loadingSpinner/LoadingSpinner";
+import LoadingSpinner from "@/components/status/LoadingSpinner";
 import usePreferences from "@/lib/hooks/bsky/actor/usePreferences";
 import useFeed from "@/lib/hooks/bsky/feed/useFeed";
 import { filterFeed } from "@/lib/utils/feed";

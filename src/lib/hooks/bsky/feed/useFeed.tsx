@@ -1,4 +1,4 @@
-import { useAgent } from "@/app/providers/agent";
+import { useAgent } from "@/lib/providers/agent";
 import { getListFeed } from "@/lib/api/bsky/list";
 import { useInfiniteQuery } from "@tanstack/react-query";
 import { getFeed, getTimeline } from "../../../api/bsky/feed";

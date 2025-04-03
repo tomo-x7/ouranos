@@ -1,4 +1,4 @@
-import { useAgent } from "@/app/providers/agent";
+import { useAgent } from "@/lib/providers/agent";
 import { getListInfo } from "@/lib/api/bsky/list";
 import { useQuery } from "@tanstack/react-query";
 

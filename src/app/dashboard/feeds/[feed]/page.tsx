@@ -1,4 +1,4 @@
-import { useAgent } from "@/app/providers/agent";
+import { useAgent } from "@/lib/providers/agent";
 import FeedHeader from "@/components/contentDisplay/feedHeader/FeedHeader";
 import FeedContainer from "@/containers/posts/FeedContainer";
 import { getFeedInfo } from "@/lib/api/bsky/feed";

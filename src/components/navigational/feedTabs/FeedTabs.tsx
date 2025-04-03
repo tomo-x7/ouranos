@@ -1,5 +1,5 @@
-import { useAgent } from "@/app/providers/agent";
-import { useScrollContext } from "@/app/providers/scroll";
+import { useAgent } from "@/lib/providers/agent";
+import { useScrollContext } from "@/lib/providers/scroll";
 import { getSavedFeeds } from "@/lib/api/bsky/feed";
 import { useQuery } from "@tanstack/react-query";
 import { useLocation, useSearchParams } from "react-router-dom";

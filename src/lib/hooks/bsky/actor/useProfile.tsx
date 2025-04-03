@@ -1,4 +1,4 @@
-import { useAgent } from "@/app/providers/agent";
+import { useAgent } from "@/lib/providers/agent";
 import { getProfile } from "@/lib/api/bsky/actor";
 import { follow, unfollow } from "@/lib/api/bsky/social";
 import type { AppBskyActorDefs } from "@atproto/api";

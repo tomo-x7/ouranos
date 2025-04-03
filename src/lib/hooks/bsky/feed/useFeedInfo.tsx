@@ -1,4 +1,4 @@
-import { useAgent } from "@/app/providers/agent";
+import { useAgent } from "@/lib/providers/agent";
 import { useQuery } from "@tanstack/react-query";
 import { getFeedInfo, getSavedFeeds } from "../../../api/bsky/feed";
 

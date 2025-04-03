@@ -1,8 +1,8 @@
-import { useAgent } from "@/app/providers/agent";
+import { useAgent } from "@/lib/providers/agent";
 import ProfileCard from "@/components/contentDisplay/profileCard/ProfileCard";
 import ProfileCardSkeleton from "@/components/contentDisplay/profileCard/ProfileCardSkeleton";
 import FeedAlert from "@/components/feedback/feedAlert/FeedAlert";
-import LoadingSpinner from "@/components/status/loadingSpinner/LoadingSpinner";
+import LoadingSpinner from "@/components/status/LoadingSpinner";
 import { getPostLikes } from "@/lib/api/bsky/feed";
 import { useInfiniteQuery } from "@tanstack/react-query";
 import { Fragment } from "react";

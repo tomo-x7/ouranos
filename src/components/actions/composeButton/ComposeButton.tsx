@@ -1,5 +1,5 @@
-import { useComposerControls } from "@/app/providers/composer";
-import { useScrollContext } from "@/app/providers/scroll";
+import { useComposerControls } from "@/lib/providers/composer";
+import { useScrollContext } from "@/lib/providers/scroll";
 import { RiQuillPenFill } from "react-icons/ri";
 import { useLocation } from "react-router-dom";
 

@@ -1,8 +1,8 @@
-import { useAgent } from "@/app/providers/agent";
+import { useAgent } from "@/lib/providers/agent";
 import ListItem from "@/components/contentDisplay/listItem/ListItem";
 import ListsSkeleton from "@/components/contentDisplay/lists/ListsSkeleton";
 import FeedAlert from "@/components/feedback/feedAlert/FeedAlert";
-import LoadingSpinner from "@/components/status/loadingSpinner/LoadingSpinner";
+import LoadingSpinner from "@/components/status/LoadingSpinner";
 import { getProfile } from "@/lib/api/bsky/actor";
 import { getLists } from "@/lib/api/bsky/list";
 import { useInfiniteQuery } from "@tanstack/react-query";

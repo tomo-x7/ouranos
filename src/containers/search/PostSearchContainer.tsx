@@ -1,9 +1,9 @@
-import { useAgent } from "@/app/providers/agent";
+import { useAgent } from "@/lib/providers/agent";
 import FeedPostSkeleton from "@/components/contentDisplay/feedPost/FeedPostSkeleton";
 import SearchPost from "@/components/contentDisplay/searchPost/SearchPost";
 import EndOfFeed from "@/components/feedback/endOfFeed/EndOfFeed";
 import FeedAlert from "@/components/feedback/feedAlert/FeedAlert";
-import LoadingSpinner from "@/components/status/loadingSpinner/LoadingSpinner";
+import LoadingSpinner from "@/components/status/LoadingSpinner";
 import { searchPosts } from "@/lib/api/bsky/actor";
 import { useInfiniteQuery } from "@tanstack/react-query";
 import { Fragment } from "react";

@@ -1,6 +1,6 @@
 import SearchList from "@/components/contentDisplay/searchList/SearchList";
 import WhoToFollowList from "@/components/contentDisplay/whoToFollowList/WhoToFollowList";
-import Search from "@/components/filter/search/Search";
+import Search from "@/components/filter/Search";
 import * as Popover from "@radix-ui/react-popover";
 import { BiSolidHelpCircle } from "react-icons/bi";
 import { BsFillPeopleFill } from "react-icons/bs";

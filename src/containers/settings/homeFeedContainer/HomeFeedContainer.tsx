@@ -1,4 +1,4 @@
-import { useAgent } from "@/app/providers/agent";
+import { useAgent } from "@/lib/providers/agent";
 import Label from "@/components/inputs/label/Label";
 import { Switch } from "@/components/inputs/switch/Switch";
 import { updateHomeFeedPreferences } from "@/lib/api/bsky/actor";

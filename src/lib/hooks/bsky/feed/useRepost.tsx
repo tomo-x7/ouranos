@@ -1,4 +1,4 @@
-import { useAgent } from "@/app/providers/agent";
+import { useAgent } from "@/lib/providers/agent";
 import type { AppBskyFeedDefs } from "@atproto/api";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { useState } from "react";

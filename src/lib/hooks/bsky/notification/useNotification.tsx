@@ -1,4 +1,4 @@
-import { useAgent } from "@/app/providers/agent";
+import { useAgent } from "@/lib/providers/agent";
 import { getNotifications, updateSeenNotifications } from "@/lib/api/bsky/notification";
 import type { Notification } from "@atproto/api/dist/client/types/app/bsky/notification/listNotifications";
 import { useInfiniteQuery } from "@tanstack/react-query";

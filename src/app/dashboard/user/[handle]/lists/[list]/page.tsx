@@ -1,4 +1,4 @@
-import { useAgent } from "@/app/providers/agent";
+import { useAgent } from "@/lib/providers/agent";
 import ListContainer from "@/containers/lists/ListContainer";
 import { getListInfo } from "@/lib/api/bsky/list";
 import type { Metadata } from "next";

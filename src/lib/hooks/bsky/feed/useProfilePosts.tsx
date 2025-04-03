@@ -1,4 +1,4 @@
-import { useAgent } from "@/app/providers/agent";
+import { useAgent } from "@/lib/providers/agent";
 import { useInfiniteQuery } from "@tanstack/react-query";
 import { getUserLikes, getUserMediaPosts, getUserPosts, getUserReplyPosts } from "../../../api/bsky/feed";
 

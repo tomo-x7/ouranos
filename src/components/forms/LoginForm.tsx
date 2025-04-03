@@ -1,7 +1,7 @@
 import Button from "@/components/actions/button/Button";
 import Input from "@/components/inputs/input/Input";
 import Label from "@/components/inputs/label/Label";
-import LoadingSpinner from "@/components/status/loadingSpinner/LoadingSpinner";
+import LoadingSpinner from "@/components/status/LoadingSpinner";
 import { signIn, useSession } from "@/lib/auth";
 import { useEffect, useState } from "react";
 import { BiSolidLockAlt } from "react-icons/bi";

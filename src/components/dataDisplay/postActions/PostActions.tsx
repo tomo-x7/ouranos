@@ -1,4 +1,4 @@
-import { useComposerControls } from "@/app/providers/composer";
+import { useComposerControls } from "@/lib/providers/composer";
 import Button from "@/components/actions/button/Button";
 import Dropdown from "@/components/actions/dropdown/Dropdown";
 import { useSession } from "@/lib/auth";

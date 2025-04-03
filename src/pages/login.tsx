@@ -1,6 +1,8 @@
-import LoginForm from "@/components/forms/loginForm/LoginForm";
+import LoginForm from "@/components/forms/LoginForm";
+import { useTitle } from "@/lib/hooks/useTitle";
 
 export function Login() {
+	useTitle("login")
 	return (
 		<>
 			<main className="relative z-10 min-h-[100svh] flex items-center justify-center animate-fade animate-delay-500 animate-duration-[600ms]">

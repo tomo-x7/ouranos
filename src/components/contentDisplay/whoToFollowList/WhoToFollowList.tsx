@@ -1,4 +1,4 @@
-import { useAgent } from "@/app/providers/agent";
+import { useAgent } from "@/lib/providers/agent";
 import { getSuggestions } from "@/lib/api/bsky/actor";
 import ProfileCard from "../profileCard/ProfileCard";
 

@@ -1,5 +1,5 @@
 import ComposePrompt from "@/components/actions/composePrompt/ComposePrompt";
-import Search from "@/components/filter/search/Search";
+import Search from "@/components/filter/Search";
 import type { AppBskyFeedDefs } from "@atproto/api";
 
 interface Props {

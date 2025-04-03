@@ -1,6 +1,6 @@
 import FeedListSkeleton from "@/components/contentDisplay/feedList/FeedListSkeleton";
 import SavedFeedListSkeleton from "@/components/contentDisplay/savedFeedList/SavedFeedListSkeleton";
-import Search from "@/components/filter/search/Search";
+import Search from "@/components/filter/Search";
 
 export default function Loading() {
 	return (

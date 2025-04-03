@@ -1,4 +1,4 @@
-import { useAgent } from "@/app/providers/agent";
+import { useAgent } from "@/lib/providers/agent";
 import Button from "@/components/actions/button/Button";
 import FeedPostSkeleton from "@/components/contentDisplay/feedPost/FeedPostSkeleton";
 import ThreadPost from "@/components/contentDisplay/threadPost/ThreadPost";

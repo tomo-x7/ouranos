@@ -1,4 +1,4 @@
-import type { ComposerOptions } from "@/app/providers/composer";
+import type { ComposerOptions } from "@/lib/providers/composer";
 import PostTag from "@/components/dataDisplay/postTag/PostTag";
 import useSearchUsers from "@/lib/hooks/bsky/actor/useSearchUsers";
 import usePublishPost from "@/lib/hooks/bsky/feed/usePublishPost";

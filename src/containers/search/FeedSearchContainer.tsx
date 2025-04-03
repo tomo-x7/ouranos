@@ -1,4 +1,4 @@
-import { useAgent } from "@/app/providers/agent";
+import { useAgent } from "@/lib/providers/agent";
 import FeedItem from "@/components/contentDisplay/feedItem/FeedItem";
 import FeedListSkeleton from "@/components/contentDisplay/feedList/FeedListSkeleton";
 import FeedAlert from "@/components/feedback/feedAlert/FeedAlert";

@@ -1,4 +1,4 @@
-import { useAgent } from "@/app/providers/agent";
+import { useAgent } from "@/lib/providers/agent";
 import { getProfile } from "@/lib/api/bsky/actor";
 import { getKnownFollowers } from "@/lib/api/bsky/social";
 import { useInfiniteQuery } from "@tanstack/react-query";

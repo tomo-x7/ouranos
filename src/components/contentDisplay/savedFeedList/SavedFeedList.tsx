@@ -1,4 +1,4 @@
-import { useAgent } from "@/app/providers/agent";
+import { useAgent } from "@/lib/providers/agent";
 import { getSavedFeeds } from "@/lib/api/bsky/feed";
 import SavedFeedItem from "../savedFeedItem/SavedFeedItem";
 

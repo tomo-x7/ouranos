@@ -1,4 +1,4 @@
-import { useAgent } from "@/app/providers/agent";
+import { useAgent } from "@/lib/providers/agent";
 import { Switch } from "@/components/inputs/switch/Switch";
 import { ToggleGroup, ToggleGroupItem } from "@/components/inputs/toggleGroup/ToggleGroup";
 import { updateContentFilterPreferences, updateIsAdultContentEnabled } from "@/lib/api/bsky/actor";

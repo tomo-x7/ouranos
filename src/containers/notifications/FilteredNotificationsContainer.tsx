@@ -2,7 +2,7 @@ import NotificationItem from "@/components/contentDisplay/notification/Notificat
 import NotificationSkeleton from "@/components/contentDisplay/notification/NotificationSkeleton";
 import EndOfFeed from "@/components/feedback/endOfFeed/EndOfFeed";
 import FeedAlert from "@/components/feedback/feedAlert/FeedAlert";
-import LoadingSpinner from "@/components/status/loadingSpinner/LoadingSpinner";
+import LoadingSpinner from "@/components/status/LoadingSpinner";
 import usePreferences from "@/lib/hooks/bsky/actor/usePreferences";
 import useNotification from "@/lib/hooks/bsky/notification/useNotification";
 import { Fragment, useEffect, useState } from "react";

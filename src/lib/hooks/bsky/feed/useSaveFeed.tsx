@@ -1,4 +1,4 @@
-import { useAgent } from "@/app/providers/agent";
+import { useAgent } from "@/lib/providers/agent";
 import { togglePinFeed, toggleSaveFeed } from "@/lib/api/bsky/feed";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { useState } from "react";

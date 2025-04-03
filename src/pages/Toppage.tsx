@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 
-export function Home() {
+export function Top() {
 	return (
 		<main className="mx-auto mt-0 p-5 md:mt-16">
 			<header className="mx-auto flex max-w-xl items-center justify-between animate-fade">

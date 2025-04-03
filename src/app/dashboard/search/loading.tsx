@@ -1,5 +1,5 @@
 import ProfileCardSkeleton from "@/components/contentDisplay/profileCard/ProfileCardSkeleton";
-import Search from "@/components/filter/search/Search";
+import Search from "@/components/filter/Search";
 
 export default function Loading() {
 	return (

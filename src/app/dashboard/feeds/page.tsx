@@ -2,7 +2,7 @@ import FeedList from "@/components/contentDisplay/feedList/FeedList";
 import FeedListSkeleton from "@/components/contentDisplay/feedList/FeedListSkeleton";
 import SavedFeedList from "@/components/contentDisplay/savedFeedList/SavedFeedList";
 import SavedFeedListSkeleton from "@/components/contentDisplay/savedFeedList/SavedFeedListSkeleton";
-import Search from "@/components/filter/search/Search";
+import Search from "@/components/filter/Search";
 import { Suspense } from "react";
 import { Link } from "react-router-dom";
 

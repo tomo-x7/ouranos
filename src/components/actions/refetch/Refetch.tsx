@@ -1,4 +1,4 @@
-import { useScrollContext } from "@/app/providers/scroll";
+import { useScrollContext } from "@/lib/providers/scroll";
 import { LuRefreshCcw } from "react-icons/lu";
 import { useDebouncedCallback } from "use-debounce";
 import Button from "../button/Button";

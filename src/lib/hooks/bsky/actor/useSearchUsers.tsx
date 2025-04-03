@@ -1,4 +1,4 @@
-import { useAgent } from "@/app/providers/agent";
+import { useAgent } from "@/lib/providers/agent";
 import { searchProfilesTypehead } from "@/lib/api/bsky/actor";
 import { getFollows } from "@/lib/api/bsky/social";
 import { useQueryClient } from "@tanstack/react-query";

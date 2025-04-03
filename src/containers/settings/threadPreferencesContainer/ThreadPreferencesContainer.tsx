@@ -1,4 +1,4 @@
-import { useAgent } from "@/app/providers/agent";
+import { useAgent } from "@/lib/providers/agent";
 import Label from "@/components/inputs/label/Label";
 import { RadioGroup, RadioGroupItem } from "@/components/inputs/radio/Radio";
 import { Switch } from "@/components/inputs/switch/Switch";

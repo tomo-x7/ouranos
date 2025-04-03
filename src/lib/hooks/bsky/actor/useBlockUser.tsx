@@ -1,4 +1,4 @@
-import { useAgent } from "@/app/providers/agent";
+import { useAgent } from "@/lib/providers/agent";
 import { blockUser, unBlockUser } from "@/lib/api/bsky/actor";
 import type { AppBskyFeedDefs } from "@atproto/api";
 import type { ViewerState } from "@atproto/api/dist/client/types/app/bsky/actor/defs";

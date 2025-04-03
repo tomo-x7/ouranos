@@ -1,4 +1,4 @@
-import type { ComposerOptionsQuote } from "@/app/providers/composer";
+import type { ComposerOptionsQuote } from "@/lib/providers/composer";
 import FallbackAvatar from "@/assets/images/fallbackAvatar.png";
 import { getRelativeTime } from "@/lib/utils/time";
 import { useState } from "react";

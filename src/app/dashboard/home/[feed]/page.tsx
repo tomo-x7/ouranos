@@ -1,4 +1,4 @@
-import { useAgent } from "@/app/providers/agent";
+import { useAgent } from "@/lib/providers/agent";
 import FeedContainer from "@/containers/posts/FeedContainer";
 import { getFeedInfo } from "@/lib/api/bsky/feed";
 import type { Metadata } from "next";

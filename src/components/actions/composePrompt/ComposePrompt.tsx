@@ -1,4 +1,4 @@
-import { useComposerControls } from "@/app/providers/composer";
+import { useComposerControls } from "@/lib/providers/composer";
 import Avatar from "@/components/dataDisplay/avatar/Avatar";
 import { type AppBskyFeedDefs, AppBskyFeedPost } from "@atproto/api";
 

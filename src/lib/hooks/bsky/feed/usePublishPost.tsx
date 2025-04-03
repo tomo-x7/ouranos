@@ -1,5 +1,5 @@
-import { useAgent } from "@/app/providers/agent";
-import type { ComposerOptionsPostRef, ComposerOptionsQuote } from "@/app/providers/composer";
+import { useAgent } from "@/lib/providers/agent";
+import type { ComposerOptionsPostRef, ComposerOptionsQuote } from "@/lib/providers/composer";
 import { compressImage } from "@/lib/utils/image";
 import { getLinkFacets } from "@/lib/utils/link";
 import { detectLanguage, jsonToText } from "@/lib/utils/text";

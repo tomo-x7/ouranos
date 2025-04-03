@@ -1,4 +1,4 @@
-import { useAgent } from "@/app/providers/agent";
+import { useAgent } from "@/lib/providers/agent";
 import PostEmbed from "@/components/dataDisplay/postEmbed/PostEmbed";
 import PostHider from "@/components/dataDisplay/postHider/PostHider";
 import PostText from "@/components/dataDisplay/postText/postText";

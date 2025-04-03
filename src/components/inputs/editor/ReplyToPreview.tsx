@@ -1,4 +1,4 @@
-import type { ComposerOptionsPostRef } from "@/app/providers/composer";
+import type { ComposerOptionsPostRef } from "@/lib/providers/composer";
 import FallbackAvatar from "@/assets/images/fallbackAvatar.png";
 import Threadline from "@/components/dataDisplay/threadLine/ThreadLine";
 import { useState } from "react";

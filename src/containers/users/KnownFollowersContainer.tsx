@@ -1,7 +1,7 @@
 import ProfileCard from "@/components/contentDisplay/profileCard/ProfileCard";
 import ProfileCardSkeleton from "@/components/contentDisplay/profileCard/ProfileCardSkeleton";
 import FeedAlert from "@/components/feedback/feedAlert/FeedAlert";
-import LoadingSpinner from "@/components/status/loadingSpinner/LoadingSpinner";
+import LoadingSpinner from "@/components/status/LoadingSpinner";
 import useKnownFollowers from "@/lib/hooks/bsky/social/useKnownFollowers";
 import { Fragment } from "react";
 import InfiniteScroll from "react-infinite-scroll-component";
