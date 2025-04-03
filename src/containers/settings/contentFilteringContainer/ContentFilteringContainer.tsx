@@ -8,7 +8,7 @@ import { Label } from "@radix-ui/react-dropdown-menu";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import type { ReactNode } from "react";
 import toast from "react-hot-toast";
-import type { ContentFilter, ContentFilterLabel, PreferencesResult } from "../../../../types/feed";
+import type { ContentFilter, ContentFilterLabel, PreferencesResult } from "../../../types/feed";
 import ContentFilteringContainerSkeleton from "./ContentFilteringContainerSkeleton";
 
 interface OptionsProps {

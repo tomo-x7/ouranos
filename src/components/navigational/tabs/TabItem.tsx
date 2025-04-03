@@ -1,10 +1,9 @@
-import type { Url } from "next/dist/shared/lib/router/router";
 import { Link } from "react-router-dom";
 
 interface Props {
 	label: string;
-	path?: string | Url;
-	as?: string | Url;
+	path?: string;
+	as?: string;
 	isActive: boolean;
 	asButton?: boolean;
 	onClick?: () => void;

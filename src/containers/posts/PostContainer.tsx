@@ -2,7 +2,7 @@ import FeedPost from "@/components/contentDisplay/feedPost/FeedPost";
 import type { AppBskyFeedDefs } from "@atproto/api";
 import type { PostView } from "@atproto/api/dist/client/types/app/bsky/feed/defs";
 import { memo } from "react";
-import type { ContentFilterResult } from "../../../types/feed";
+import type { ContentFilterResult } from "../../types/feed";
 
 interface Props {
 	post: AppBskyFeedDefs.FeedViewPost;

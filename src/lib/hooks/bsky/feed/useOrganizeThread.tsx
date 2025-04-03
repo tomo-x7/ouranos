@@ -1,5 +1,5 @@
 import { AppBskyFeedDefs } from "@atproto/api";
-import type { Thread } from "../../../../../types/feed";
+import type { Thread } from "../../../../types/feed";
 
 interface Props {
 	thread: Thread;

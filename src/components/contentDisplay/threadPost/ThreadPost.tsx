@@ -8,7 +8,7 @@ import { getFormattedDate } from "@/lib/utils/time";
 import type { AppBskyFeedDefs } from "@atproto/api";
 import { useEffect, useRef, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import type { ContentFilterResult } from "../../../../types/feed";
+import type { ContentFilterResult } from "../../../types/feed";
 import ProfileHoverCard from "../profileHoverCard/ProfileHoverCard";
 
 interface Props {

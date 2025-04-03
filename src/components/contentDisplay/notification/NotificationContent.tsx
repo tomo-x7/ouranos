@@ -10,7 +10,7 @@ import type { ViewRecord } from "@atproto/api/dist/client/types/app/bsky/embed/r
 import { useQuery } from "@tanstack/react-query";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import type { ContentFilterResult } from "../../../../types/feed";
+import type { ContentFilterResult } from "../../../types/feed";
 import NotificationContentSkeleton from "./NotificationContentSkeleton";
 
 interface Props {

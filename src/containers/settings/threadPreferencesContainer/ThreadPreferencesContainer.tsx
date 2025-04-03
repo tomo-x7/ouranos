@@ -8,7 +8,7 @@ import usePreferences from "@/lib/hooks/bsky/actor/usePreferences";
 import type { BskyThreadViewPreference } from "@atproto/api";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import toast from "react-hot-toast";
-import type { PreferencesResult } from "../../../../types/feed";
+import type { PreferencesResult } from "../../../types/feed";
 import ThreadPreferencesContainerSkeleton from "./ThreadPreferencesContainerSkeleton";
 
 interface ItemProps {

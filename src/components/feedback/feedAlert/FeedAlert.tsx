@@ -1,5 +1,5 @@
 import { getFeedAlertIcon } from "@/lib/utils/icon";
-import type { FeedAlert } from "../../../../types/feed";
+import type { FeedAlert } from "../../../types/feed";
 
 interface Props {
 	variant: FeedAlert;

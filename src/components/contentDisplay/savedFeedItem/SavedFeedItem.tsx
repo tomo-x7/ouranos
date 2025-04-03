@@ -1,6 +1,6 @@
 import FallbackFeed from "@/assets/images/fallbackFeed.png";
 import { Link } from "react-router-dom";
-import type { SavedFeed } from "../../../../types/feed";
+import type { SavedFeed } from "../../../types/feed";
 
 interface Props {
 	feedItem: SavedFeed;

@@ -4,7 +4,7 @@ import { getFormattedDate } from "@/lib/utils/time";
 import { AtUri } from "@atproto/api";
 import type { Record } from "@atproto/api/dist/client/types/com/atproto/repo/listRecords";
 import { Link } from "react-router-dom";
-import { FyiUnravelFrontpagePost } from "../../../types/atmosphere/index";
+import { FyiUnravelFrontpagePost } from "../../types/atmosphere/index";
 
 interface Props {
 	records: Record[];

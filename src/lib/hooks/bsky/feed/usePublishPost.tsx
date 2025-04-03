@@ -16,7 +16,7 @@ import {
 import { useMutation } from "@tanstack/react-query";
 import type { JSONContent } from "@tiptap/react";
 import toast from "react-hot-toast";
-import type { ThreadgateSetting } from "../../../../../types/feed";
+import type { ThreadgateSetting } from "../../../../types/feed";
 
 interface Props {
 	text: JSONContent;

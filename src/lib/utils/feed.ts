@@ -3,7 +3,7 @@ import { AppBskyActorDefs } from "@atproto/api";
 import type { Preferences } from "@atproto/api/dist/client/types/app/bsky/actor/defs";
 import type { ViewRecord } from "@atproto/api/dist/client/types/app/bsky/embed/record";
 import type { FeedViewPost } from "@atproto/api/dist/client/types/app/bsky/feed/defs";
-import type { ContentFilter, ContentFilterResult, FeedFilterResult, ThreadViewResult } from "../../../types/feed";
+import type { ContentFilter, ContentFilterResult, FeedFilterResult, ThreadViewResult } from "../../types/feed";
 import { CONTENT_FILTER_OPTIONS } from "../consts/moderation";
 import { THREAD_VIEW_PREFS } from "../consts/settings";
 

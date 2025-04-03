@@ -1,14 +1,14 @@
 import Button from "@/components/actions/button/Button";
-import dynamic from "next/dynamic";
+import Picker from "emoji-picker-react";
 import { useState } from "react";
 import { BiSmile } from "react-icons/bi";
 
-const Picker = dynamic(
-	() => {
-		return import("emoji-picker-react");
-	},
-	{ ssr: false },
-);
+// const Picker = dynamic(
+// 	() => {
+// 		return import("emoji-picker-react");
+// 	},
+// 	{ ssr: false },
+// );
 
 interface Props {
 	onEmojiSelect: (emoji: string) => void;

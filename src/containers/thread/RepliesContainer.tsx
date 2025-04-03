@@ -4,7 +4,7 @@ import NotFoundEmbed from "@/components/dataDisplay/postEmbed/NotFoundEmbed";
 import { MAX_REPLIES } from "@/lib/consts/thread";
 import { AppBskyFeedDefs } from "@atproto/api";
 import { useState } from "react";
-import type { ContentFilterResult } from "../../../types/feed";
+import type { ContentFilterResult } from "../../types/feed";
 
 interface Props {
 	replies: AppBskyFeedDefs.ThreadViewPost[];

@@ -1,4 +1,4 @@
-import type { ThreadViewResult } from "../../../types/feed";
+import type { ThreadViewResult } from "../../types/feed";
 
 export const THREAD_VIEW_PREFS: ThreadViewResult = {
 	sort: "newest",

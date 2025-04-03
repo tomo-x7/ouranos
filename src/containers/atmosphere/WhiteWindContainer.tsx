@@ -2,7 +2,7 @@ import Alert from "@/components/feedback/alert/Alert";
 import { getFormattedDate } from "@/lib/utils/time";
 import type { Record } from "@atproto/api/dist/client/types/com/atproto/repo/listRecords";
 import { Link } from "react-router-dom";
-import { ComWhtwndBlogEntry } from "../../../types/atmosphere/index";
+import { ComWhtwndBlogEntry } from "../../types/atmosphere/index";
 
 interface Props {
 	records: Record[];

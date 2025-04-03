@@ -4,7 +4,7 @@ import type { Editor, JSONContent } from "@tiptap/react";
 import { useState } from "react";
 import { useDropzone } from "react-dropzone";
 import { BiUpload } from "react-icons/bi";
-import type { ThreadgateSetting } from "../../../../types/feed";
+import type { ThreadgateSetting } from "../../../types/feed";
 import AdultContentPicker from "./AdultContentPicker";
 import CharacterCount from "./CharacterCount";
 import EmojiPicker from "./EmojiPicker";

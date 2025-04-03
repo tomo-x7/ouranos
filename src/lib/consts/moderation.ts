@@ -1,4 +1,4 @@
-import type { ContentFilter } from "../../../types/feed";
+import type { ContentFilter } from "../../types/feed";
 
 export const CONTENT_FILTER_OPTIONS: ContentFilter[] = [
 	{

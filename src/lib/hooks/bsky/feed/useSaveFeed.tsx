@@ -3,7 +3,7 @@ import { togglePinFeed, toggleSaveFeed } from "@/lib/api/bsky/feed";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { useState } from "react";
 import toast from "react-hot-toast";
-import type { SavedFeed } from "../../../../../types/feed";
+import type { SavedFeed } from "../../../../types/feed";
 
 interface Props {
 	feedItem: SavedFeed;

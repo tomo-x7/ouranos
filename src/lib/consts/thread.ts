@@ -1,4 +1,4 @@
-import type { ThreadgateSetting } from "../../../types/feed";
+import type { ThreadgateSetting } from "../../types/feed";
 
 export const MAX_REPLIES = 4;
 

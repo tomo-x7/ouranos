@@ -2,7 +2,7 @@ import { AppBskyFeedPost } from "@atproto/api";
 import type { PostView } from "@atproto/api/dist/client/types/app/bsky/feed/defs";
 import type { JSONContent } from "@tiptap/react";
 import { detect } from "tinyld";
-import type { ThreadgateSetting } from "../../../types/feed";
+import type { ThreadgateSetting } from "../../types/feed";
 
 export function getHandle(mention: string) {
 	return mention.slice(1);

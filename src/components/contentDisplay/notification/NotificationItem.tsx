@@ -6,7 +6,7 @@ import { getRelativeTime } from "@/lib/utils/time";
 import type { AppBskyNotificationListNotifications } from "@atproto/api";
 import { memo } from "react";
 import { Link } from "react-router-dom";
-import type { ContentFilterResult, GroupedNotification } from "../../../../types/feed";
+import type { ContentFilterResult, GroupedNotification } from "../../../types/feed";
 import ProfileHoverCard from "../profileHoverCard/ProfileHoverCard";
 import NotificationContnet from "./NotificationContent";
 import NotificationPost from "./NotificationPost";

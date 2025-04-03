@@ -4,7 +4,7 @@ import { THREADGATE_OPTIONS } from "@/lib/consts/thread";
 import { getThreadGateIcon } from "@/lib/utils/icon";
 import { getThreadGateComposerTitle } from "@/lib/utils/text";
 import { BiCheck } from "react-icons/bi";
-import type { ThreadgateSetting } from "../../../../types/feed";
+import type { ThreadgateSetting } from "../../../types/feed";
 
 interface Props {
 	onUpdate: React.Dispatch<React.SetStateAction<ThreadgateSetting[]>>;

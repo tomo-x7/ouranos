@@ -5,7 +5,7 @@ import Threadline from "@/components/dataDisplay/threadLine/ThreadLine";
 import { MAX_PARENT_REPLIES } from "@/lib/consts/thread";
 import { AppBskyFeedDefs } from "@atproto/api";
 import { useState } from "react";
-import type { ContentFilterResult, Thread } from "../../../types/feed";
+import type { ContentFilterResult, Thread } from "../../types/feed";
 
 interface Props {
 	parentChain: Thread[];

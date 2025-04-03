@@ -8,7 +8,7 @@ import { IoCloudOffline } from "react-icons/io5";
 import { MdBlock } from "react-icons/md";
 import { PiWarningCircleFill } from "react-icons/pi";
 import { VscMention } from "react-icons/vsc";
-import type { FeedAlert, ThreadgateSetting } from "../../../types/feed";
+import type { FeedAlert, ThreadgateSetting } from "../../types/feed";
 
 export function getAlertIcon(variant: "success" | "error" | "info" | "warning") {
 	switch (variant) {

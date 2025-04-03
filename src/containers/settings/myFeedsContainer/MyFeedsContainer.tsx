@@ -8,7 +8,7 @@ import { useQuery } from "@tanstack/react-query";
 import { BiSolidTrash } from "react-icons/bi";
 import { BiSolidBookmarkAlt } from "react-icons/bi";
 import { Link } from "react-router-dom";
-import type { SavedFeed } from "../../../../types/feed";
+import type { SavedFeed } from "../../../types/feed";
 import MyFeedsContainerSkeleton from "./MyFeedsContainerSkeleton";
 
 interface FeedItemProps {

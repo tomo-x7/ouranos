@@ -6,7 +6,7 @@ import usePreferences from "@/lib/hooks/bsky/actor/usePreferences";
 import type { BskyFeedViewPreference } from "@atproto/api";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import toast from "react-hot-toast";
-import type { PreferencesResult } from "../../../../types/feed";
+import type { PreferencesResult } from "../../../types/feed";
 import HomeFeedContainerSkeleton from "./HomeFeedContainerSkeleton";
 
 export default function HomeFeedContainer() {

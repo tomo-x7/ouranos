@@ -14,7 +14,7 @@ import Placeholder from "@tiptap/extension-placeholder";
 import { useEditor } from "@tiptap/react";
 import StarterKit from "@tiptap/starter-kit";
 import { useState } from "react";
-import type { ThreadgateSetting } from "../../../../types/feed";
+import type { ThreadgateSetting } from "../../../types/feed";
 import BottomEditorBar from "./BottomEditorBar";
 import { CreateMentionSuggestions } from "./CreateMentionSuggestions";
 import LinkCard from "./LinkCard";

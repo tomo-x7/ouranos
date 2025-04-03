@@ -2,7 +2,7 @@ import { useAgent } from "@/app/providers/agent";
 import { getPost } from "@/lib/api/bsky/feed";
 import type { AppBskyFeedDefs } from "@atproto/api";
 import { useQuery } from "@tanstack/react-query";
-import type { ContentFilterResult } from "../../../../types/feed";
+import type { ContentFilterResult } from "../../../types/feed";
 import FeedPost from "../feedPost/FeedPost";
 import NotificationPostSkeleton from "./NotificationPostSkeleton";
 

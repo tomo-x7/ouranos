@@ -57,12 +57,15 @@ export default function FeedTabs() {
 										key={feed.cid}
 										isActive={feed.uri === uri}
 										label={feed.displayName}
-										path={{
-											pathname: `/dashboard/home/${encodeURIComponent(
-												feed.uri.split(":")[3].split("/")[0],
-											)}`,
-											query: { uri: feed.uri },
-										}}
+										path={`/dashboard/home/${encodeURIComponent(
+											feed.uri.split(":")[3].split("/")[0],
+										)}?uri=${feed.uri}`}
+										// path={{
+										// 	pathname: `/dashboard/home/${encodeURIComponent(
+										// 		feed.uri.split(":")[3].split("/")[0],
+										// 	)}`,
+										// 	query: { uri: feed.uri },
+										// }}
 									/>
 								);
 							})}

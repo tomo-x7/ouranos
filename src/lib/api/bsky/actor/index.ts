@@ -1,5 +1,5 @@
 import type { Agent, BskyFeedViewPreference, BskyThreadViewPreference, LabelPreference } from "@atproto/api";
-import type { ContentFilterLabel } from "../../../../../types/feed";
+import type { ContentFilterLabel } from "../../../../types/feed";
 
 export const getProfile = async (handle: string | undefined, agent: Agent) => {
 	if (!handle) return;

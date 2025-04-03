@@ -2,7 +2,7 @@ import { useAgent } from "@/app/providers/agent";
 import { getNotifications, updateSeenNotifications } from "@/lib/api/bsky/notification";
 import type { Notification } from "@atproto/api/dist/client/types/app/bsky/notification/listNotifications";
 import { useInfiniteQuery } from "@tanstack/react-query";
-import type { GroupedNotification } from "../../../../../types/feed";
+import type { GroupedNotification } from "../../../../types/feed";
 
 interface Props {
 	notificationType: NotificationReason | "all";
